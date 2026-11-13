@@ -142,5 +142,22 @@ for (const [name, opts, prompt, id, ...rest] of cases) {
   } finally { rmSync(proj, { recursive: true, force: true }); }
 }
 
+/* ---------- the project list and what a new project copies ---------- */
+{
+  let list = null;
+  try { list = JSON.parse(readFileSync(join(ROOT, 'projects.json'), 'utf8')).projects; } catch (e) { bad(`projects.json: ${e.message}`); }
+  if (list) {
+    if (!Array.isArray(list) || !list.length) bad('projects.json lists no projects');
+    const seen = new Set();
+    for (const p of list || []) {
+      for (const k of ['name', 'repo', 'check', 'instructions', 'practiceJob', 'joined']) if (typeof p[k] !== 'string' || !p[k].trim()) bad(`projects.json: ${p.name || p.repo || '?'} has no "${k}"`);
+      if (!/^[\w.-]+\/[\w.-]+$/.test(p.repo || '')) bad(`projects.json: "${p.repo}" is not owner/name`);
+      if (seen.has((p.repo || '').toLowerCase())) bad(`projects.json: ${p.repo} is listed twice`);
+      seen.add((p.repo || '').toLowerCase());
+    }
+  }
+  for (const f of ['templates/check-team.mjs', 'templates/ADAPTER.md', 'templates/INSTRUCTIONS.md', 'WEEKLY.md']) if (!existsSync(join(ROOT, f))) bad(`${f} is missing: a new project and the weekly run need it`);
+}
+
 if (problems.length) { console.error(problems.map(p => '✗ ' + p).join('\n')); console.error(`\n${problems.length} problem(s).`); process.exit(1); }
 console.log(`✓ ${briefs.length} briefs, the lessons log, the shared cues, cross-item, no-passage and sync-check are in order.`);
