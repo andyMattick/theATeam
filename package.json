@@ -1,0 +1,10 @@
+{
+  "name": "the-a-team",
+  "private": true,
+  "type": "module",
+  "description": "One team of agents and one set of checks for the owner's teaching projects.",
+  "scripts": {
+    "check": "node scripts/check.mjs",
+    "sync-check": "node scripts/sync-check.mjs"
+  }
+}
