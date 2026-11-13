@@ -23,6 +23,7 @@ const defaultSet = () => [
   'checks/test-wise-cues.mjs',
   'checks/cross-item.mjs',
   'checks/no-passage.mjs',
+  'checks/outbox.mjs',
   'LESSONS.md'
 ];
 

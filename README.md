@@ -74,6 +74,8 @@ Ask Claude to "add this app to the team", or do it by hand:
    brief, the shared checks, the lessons log and the manifest.
 2. Copy `templates/check-team.mjs` to the project's `scripts/` and add it to the project's check command (and its CI).
 3. Copy `templates/ADAPTER.md` to `.team/ADAPTER.md` and fill it in: what each of the nine stages is called there.
+   Copy `templates/OUTBOX.md` to `.team/OUTBOX.md`: where a session leaves a lesson for the team when it can't reach
+   this repo.
 4. Put the section from `templates/INSTRUCTIONS.md` in the project's instructions file (`CLAUDE.md` or `AGENTS.md`).
 5. Add the project to `projects.json` and a column to the table in `PROJECTS.md`. From then on the weekly run
    (`WEEKLY.md`) includes it.

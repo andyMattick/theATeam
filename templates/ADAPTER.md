@@ -10,6 +10,14 @@
 - This project's check command runs `scripts/check-team.mjs`: a copy that no longer has the hash in
   `.team/manifest.json` fails. Never edit a copy: make the change in the team repo.
 
+## Before content work, and after it
+- **Before:** if the team repo is in the session, sync first (the command above), so the work starts from the team's
+  newest briefs and lessons. If it isn't, work from the copies in `.team/` as they are: the weekly run keeps them
+  within a week of the team.
+- **After:** a lesson that isn't about this project's own code goes to the team's `LESSONS.md`. If the team repo can't
+  be reached from the session, add one line to `.team/OUTBOX.md` instead; the weekly run takes it to the team and
+  empties the outbox. This project's check fails if a line waits there more than 14 days.
+
 ## What each stage of the team's process is called here
 | Team stage | Here |
 |---|---|

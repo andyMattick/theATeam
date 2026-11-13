@@ -17,7 +17,8 @@ from evidence, in pull requests that pass the checks. It never loosens a rule by
    the version, name the cause.
 3. **Turn the catch into a script.** When a reader found what a script missed, add a pattern for it to the shared
    check, with a self-test that fails without it. When no script can catch it, say "reader only" in the lesson.
-4. **Write the lesson** in `LESSONS.md`, once, with its id.
+4. **Write the lesson** in `LESSONS.md`, once, with its id. A session working in one project that can't reach this
+   repo writes it in that project's `.team/OUTBOX.md`; the weekly run brings it here.
 5. **Count the cost:** dollars for each step, and dollars for each confirmed FIX. This is what the monthly streamline
    check reads. A project that logs only tokens (AP Statistics today) logs dollars from now on.
 
