@@ -7,6 +7,8 @@ import { tmpdir } from 'node:os';
 import { fileURLToPath } from 'node:url';
 import { STRATS } from '../checks/test-wise-cues.mjs';
 import { syncCheck } from './sync-check.mjs';
+import { crossItemHits, quoted } from '../checks/cross-item.mjs';
+import { readingPicks, judge, numberOnly } from '../checks/no-passage.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const problems = [];
@@ -69,6 +71,54 @@ for (const [name, opts, prompt, id, ...rest] of cases) {
   if (!same(got, want)) bad(`checks/test-wise-cues.mjs: ${name} picked [${got}] where it should pick [${want}]`);
 }
 
+/* ---------- cross-item and no-passage: a clean test passes, a leaky one is caught (Planning Period's self-tests,
+   in the team's neutral shape) ---------- */
+{
+  const W = 'amber birch cobalt dune ember fjord garnet heron indigo juniper kestrel lagoon marble nectar orchid pewter quartz russet sable tundra umber velvet willow yarrow zephyr alder bramble cinder delta egret fennel glacier hazel iris jasper kelpie larch moss nutmeg ochre pine quill reed saffron thistle'.split(' ');
+  const maker = () => { let k = 0; const w = () => W[k++ % W.length] + (k > W.length ? 'x'.repeat(Math.floor(k / W.length)) : ''); return () => `${w()} ${w()} ${w()}`; };
+  // cross-item: 8 multiple-choice items and one written answer
+  const test = (leaky) => {
+    const phrase = maker(), qs = [];
+    for (let n = 1; n <= 8; n++) { const choices = [phrase(), phrase(), phrase(), phrase()], answer = n % 4; qs.push({ where: `q${n}`, prompt: `Question ${n}: what about ${phrase()}?`, choices, answer }); }
+    const model = `It says "${phrase()} ${phrase()}" [2]`;
+    qs.push({ where: 'q9', prompt: `Quote a line about ${phrase()}.`, model });
+    if (leaky) {
+      qs[5].choices[(qs[5].answer + 1) % 4] = qs[1].choices[qs[1].answer];                                    // a wrong choice repeats another key
+      qs[6].prompt += ` (${qs[2].choices[qs[2].answer].split(' ').slice(0, 2).join(' and ')} matter here.)`;  // a prompt names a key's words
+      qs[3].choices[(qs[3].answer + 2) % 4] = `"${quoted(model)[0]}" [3]`;                                    // a written answer's line printed as a choice
+    }
+    return qs.map((q) => ({ ...q, keys: q.model ? quoted(q.model) : [q.choices[q.answer]] }));
+  };
+  if (crossItemHits([test(false)]).hits.length) bad('checks/cross-item.mjs flagged a test whose items never print each other\'s keys');
+  const leak = crossItemHits([test(true)]).hits;
+  for (const [how, from, to] of [['keyPhrase', 'q2', 'q6'], ['keyWords', 'q3', 'q7'], ['keyPhrase', 'q9', 'q4']])
+    if (!leak.some((h) => h.how === how && h.where === from && h.other === to)) bad(`checks/cross-item.mjs missed ${how}: ${from}'s key in ${to}`);
+  if (crossItemHits([test(true).slice(0, 3)]).checked) bad('checks/cross-item.mjs judged a list with fewer than 4 keyed items');
+
+  // no-passage: 10 reading items with Part A / Part B pairs
+  const reading = (leaky) => {
+    const phrase = maker(), qs = [];
+    for (let n = 1; n <= 10; n++) {
+      const pairA = n % 3 === 1 && n < 10, pairB = n % 3 === 2;
+      const prompt = `${pairA ? 'Part A: ' : pairB ? 'Part B: Which quotation BEST supports the answer to Part A?' : ''}${pairB ? '' : `Question ${n} about ${phrase()}?`}`;
+      const choices = [phrase(), phrase(), phrase(), phrase()].map((c) => (pairB ? `"${c}." [${n}]` : c));
+      qs.push({ where: `q${n}`, type: 'mc', prompt, choices, answer: n % 4 });
+    }
+    if (leaky) qs.forEach((q, i) => {
+      const key = q.choices[q.answer];
+      if (/^Part B/.test(q.prompt)) { const a = qs[i - 1], ak = a.choices[a.answer].split(' '); q.choices[q.answer] = `"${ak[0]} and ${ak[1]} ${ak[2]} again." [${i}]`; }   // Part B's key quote shares Part A's key words
+      else if (!/^Part A/.test(q.prompt)) { const later = qs.find((x, j) => j > i && !/^Part B/.test(x.prompt)); if (later) later.prompt += ` (Remember: ${key}.)`; }      // a later prompt names this key
+    });
+    return qs.map((q) => ({ ...q, opts: q.choices.map(String) }));
+  };
+  if (judge(readingPicks(reading(false))).fails.length) bad('checks/no-passage.mjs failed a reading test with no cues between items');
+  if (!judge(readingPicks(reading(true))).fails.length) bad('checks/no-passage.mjs missed Part B quotes that echo Part A keys and prompts that name earlier keys');
+  if (judge(readingPicks(reading(true)).slice(0, 7)).fails.length) bad('checks/no-passage.mjs judged a group of fewer than 8 items');
+  const sa = (prompt) => numberOnly([{ where: 's1', type: 'short', prompt }]).length;
+  if (!sa('Why did it take so long? Give the reason and the paragraph number that shows it.')) bad('checks/no-passage.mjs missed a short answer whose evidence is only a paragraph number');
+  if (sa('Why did it take so long? Quote the words that show it and give the paragraph number.')) bad('checks/no-passage.mjs failed a short answer that asks for the quoted words too');
+}
+
 /* ---------- sync-check: a fresh copy passes, an edited copy and a stale copy fail ---------- */
 {
   const proj = mkdtempSync(join(tmpdir(), 'team-sync-'));
@@ -86,8 +136,11 @@ for (const [name, opts, prompt, id, ...rest] of cases) {
     writeFileSync(man, JSON.stringify(m));
     const s = syncCheck(proj);
     if (s.ok || !s.lines.some(l => /^behind\s+agents\/maker\.md/.test(l))) bad('self-test: sync-check missed a copy that is behind');
+    delete m.files['checks/cross-item.mjs']; writeFileSync(man, JSON.stringify(m));
+    syncCheck(proj, { write: true, take: ['checks/cross-item.mjs'] });
+    if (!JSON.parse(readFileSync(man, 'utf8')).files['checks/cross-item.mjs'] || !syncCheck(proj).ok) bad('self-test: --take did not add a team file to an existing manifest');
   } finally { rmSync(proj, { recursive: true, force: true }); }
 }
 
 if (problems.length) { console.error(problems.map(p => '✗ ' + p).join('\n')); console.error(`\n${problems.length} problem(s).`); process.exit(1); }
-console.log(`✓ ${briefs.length} briefs, the lessons log, the shared cues and sync-check are in order.`);
+console.log(`✓ ${briefs.length} briefs, the lessons log, the shared cues, cross-item, no-passage and sync-check are in order.`);

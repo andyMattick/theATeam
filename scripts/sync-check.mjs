@@ -7,8 +7,10 @@
    The project keeps its copies under .team/ at the same paths as here (.team/agents/maker.md, .team/LESSONS.md, …).
    .team/manifest.json lists each copy with the hash it had when it was taken:
      { "files": { "agents/maker.md": "<sha256>", … } }
-   With --write and no manifest, the default set is taken: every brief, the shared cue file and the lessons log.
-   A project that wants fewer files deletes lines from its manifest; --write then refreshes only what is listed. */
+   With --write and no manifest, the default set is taken: every brief, the shared checks and the lessons log.
+   A project that wants fewer files deletes lines from its manifest; --write then refreshes only what is listed.
+   A project that already has a manifest takes a file the team added later with --take:
+     node scripts/sync-check.mjs --project <dir> --write --take checks/cross-item.mjs --take checks/no-passage.mjs */
 import { createHash } from 'node:crypto';
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
@@ -19,16 +21,18 @@ const sha = buf => createHash('sha256').update(buf).digest('hex');
 const defaultSet = () => [
   ...readdirSync(join(TEAM, 'agents')).filter(f => f.endsWith('.md')).sort().map(f => `agents/${f}`),
   'checks/test-wise-cues.mjs',
+  'checks/cross-item.mjs',
+  'checks/no-passage.mjs',
   'LESSONS.md'
 ];
 
 /* Returns { ok, lines }. status per file: ok | behind | edited | missing | gone (no longer in the team). */
-export function syncCheck(project, { write = false, team = TEAM } = {}) {
+export function syncCheck(project, { write = false, team = TEAM, take = [] } = {}) {
   const dir = join(project, '.team'), manPath = join(dir, 'manifest.json');
   const lines = [];
   let man = existsSync(manPath) ? JSON.parse(readFileSync(manPath, 'utf8')) : null;
   if (!man && !write) return { ok: false, lines: [`no ${manPath}: run with --write to take the team's files`] };
-  const files = man ? Object.keys(man.files) : defaultSet();
+  const files = man ? [...new Set([...Object.keys(man.files), ...(write ? take : [])])] : defaultSet();
   if (write) {
     const out = { team: 'theATeam', files: {} };
     for (const f of files) {
@@ -63,8 +67,9 @@ export function syncCheck(project, { write = false, team = TEAM } = {}) {
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const a = process.argv.slice(2), i = a.indexOf('--project');
-  if (i < 0 || !a[i + 1]) { console.error('usage: node scripts/sync-check.mjs --project <dir> [--write]'); process.exit(2); }
-  const { ok, lines } = syncCheck(resolve(a[i + 1]), { write: a.includes('--write') });
+  if (i < 0 || !a[i + 1]) { console.error('usage: node scripts/sync-check.mjs --project <dir> [--write [--take <team file>]…]'); process.exit(2); }
+  const take = a.map((x, j) => (x === '--take' ? a[j + 1] : null)).filter(Boolean);
+  const { ok, lines } = syncCheck(resolve(a[i + 1]), { write: a.includes('--write'), take });
   console.log(lines.join('\n'));
   if (!ok) { console.error('\nNot in sync. "behind": run with --write. "edited": undo the edit, and make the change in the team repo.'); process.exit(1); }
 }
