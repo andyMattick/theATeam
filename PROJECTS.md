@@ -22,8 +22,8 @@ this for every project; a project may also run it in its own check command.
 | Blueprint rules written down | `CONTENT-RULES.md` | `agents/maker.md`, `feasibility.json` | `docs/CONTENT_SPEC.md` | in the prompts |
 | Independent key solver | yes (oracles) | yes (SymPy) | yes (scipy, chi-square re-solve) | no |
 | Guessing bots | yes, the fullest | yes, the shared cues plus number bots | yes, its own | no |
-| Giveaways across items | "earlier answer tells" (math); the shared check not run yet | yes, the shared `cross-item.mjs` | reviews only; the shared check not run yet | no |
-| No-passage gate | `inPassage` cue only; the shared check not run yet | yes, the shared `no-passage.mjs` | not needed | no |
+| Giveaways across items | "earlier answer tells" (math); cross-item held back (L060) | yes, the shared `cross-item.mjs` | reviews only | no |
+| Whole-test bots (the shared `no-passage.mjs`) | yes, in the full bot (cross-test bots) | yes, on reading documents | yes, `cross-test-bot.ts` | no |
 | Blind solver | yes | yes, one for each subject | yes | no |
 | Fact checker | worksheet facts only | yes | no | no |
 | Difficulty judge | heart finder, hardness check | in the blind tester's brief | level 3 review, exam compare | no |
