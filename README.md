@@ -25,6 +25,9 @@ Set up Nov 13, 2026 from a survey of four projects. Each had grown its own team;
 | `PROJECTS.md` | How each project plugs in, and what each is still missing |
 | `scripts/check.mjs` | `npm run check`: the briefs, the lessons log and the shared checks are well formed |
 | `scripts/sync-check.mjs` | Run from a project: fails when its copy of a team file is behind |
+| `projects.json` | The projects on the team; the weekly run goes through it |
+| `WEEKLY.md` | The steps of the weekly run |
+| `templates/` | What a new project copies: its check script, its adapter, the section for its instructions file |
 
 ## The team
 
@@ -56,6 +59,27 @@ projects and is not content work, so it is not here.
 ## How a project uses the team
 
 1. It copies the team files it uses into its own repo and lists them in `.team/manifest.json` (`PROJECTS.md`).
-2. Its own check command runs `node <team>/scripts/sync-check.mjs`, or the weekly run does: a stale copy fails.
-3. Its adapter says how the team's steps map to its own commands (what "the student copy" is, where keys live).
-4. It never edits a copied file. A change is made here and travels to every project.
+2. Its own check command runs `scripts/check-team.mjs`: a copy that was edited in the project fails. The weekly run
+   checks whether a copy is behind.
+3. Its adapter (`.team/ADAPTER.md`) says how the team's steps map to its own commands.
+4. Its instructions file for AI assistants says content work follows the team (`templates/INSTRUCTIONS.md`), so a
+   new session uses the team without being told.
+5. It never edits a copied file. A change is made here and travels to every project.
+
+## Adding a new project
+
+Ask Claude to "add this app to the team", or do it by hand:
+
+1. From this repo: `node scripts/sync-check.mjs --project <the new repo> --write`. That makes `.team/` with every
+   brief, the shared checks, the lessons log and the manifest.
+2. Copy `templates/check-team.mjs` to the project's `scripts/` and add it to the project's check command (and its CI).
+3. Copy `templates/ADAPTER.md` to `.team/ADAPTER.md` and fill it in: what each of the nine stages is called there.
+4. Put the section from `templates/INSTRUCTIONS.md` in the project's instructions file (`CLAUDE.md` or `AGENTS.md`).
+5. Add the project to `projects.json` and a column to the table in `PROJECTS.md`. From then on the weekly run
+   (`WEEKLY.md`) includes it.
+6. Run the project's content through the shared checks once. What they find is fixed or listed by that project's
+   rules, never by loosening a check.
+
+## The weekly run
+
+`WEEKLY.md` is the steps; `projects.json` is the list it goes through; reports land in `weekly/`.
