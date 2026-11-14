@@ -5,5 +5,6 @@ shared team's process: `.team/ADAPTER.md` says what each of its nine stages is c
 are in `.team/agents/`. In short: plan before writing, the maker never checks its own work, every script check runs,
 one round of fresh readers (a blind solve with no key at the least), one fix round that changes wrong choices and
 never keys, and a person agrees before students see it. This project's own rules still come first where they are
-stricter. A lesson learned here that isn't about this project's own code also goes to the team repo's `LESSONS.md`,
-so the other projects get it at the weekly sync. Never edit a file in `.team/`: change it in the team repo.
+stricter. A lesson learned here that isn't about this project's own code also goes to the team repo's `LESSONS.md`
+(or, when the team repo can't be reached, one line in `.team/OUTBOX.md`), so the other projects get it at the weekly
+sync. Never edit a file in `.team/`: change it in the team repo.

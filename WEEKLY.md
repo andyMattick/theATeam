@@ -18,7 +18,10 @@ its checks are green, and leaves a change to a project's sensitive paths for the
    wrong or doubtful key, two right answers, no right answer, a giveaway, a false fact) is fixed now, by the
    project's own rules. Anything else goes on the project's known-failing list where it has one, and only where its
    rules allow that.
-3. **Read the project's new lessons**: its review docs, audits and cost log since last week. A lesson that isn't about
+3. **Empty the project's outbox** (`.team/OUTBOX.md`): each line under "Waiting for the weekly run" becomes a lesson
+   in `LESSONS.md` here with the next id, naming the project. Then put the outbox back to its header (in the same
+   pull request as the project's sync). Then **read the project's new lessons**: its review docs, audits and cost log
+   since last week, for anything a session didn't put in the outbox. A lesson that isn't about
    that project's own code goes into `LESSONS.md` here with the next id, and into a brief (bump its version, name the
    cause) when it happened twice, or once if serious.
 4. **Real-use signals**, where the project has them (Pet World: `npm run weekly-learning`; Planning Period: teachers'

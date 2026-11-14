@@ -9,6 +9,7 @@ import { STRATS } from '../checks/test-wise-cues.mjs';
 import { syncCheck } from './sync-check.mjs';
 import { crossItemHits, quoted } from '../checks/cross-item.mjs';
 import { readingPicks, judge, numberOnly } from '../checks/no-passage.mjs';
+import { outboxProblems, outboxEntries } from '../checks/outbox.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const problems = [];
@@ -142,6 +143,23 @@ for (const [name, opts, prompt, id, ...rest] of cases) {
   } finally { rmSync(proj, { recursive: true, force: true }); }
 }
 
+/* ---------- the outbox rule: a fresh line passes; a stale, undated, short or future line fails; the template is clean ---------- */
+{
+  const now = new Date('2026-12-01T12:00:00Z');
+  const ok = '# Outbox\n\n## Waiting for the weekly run\n- 2026-11-28 | keys echoed the unit (41.5% against 25%) | whole-test bots\n';
+  if (outboxProblems(ok, now).length) bad('checks/outbox.mjs refused a fresh, well-formed line');
+  if (outboxEntries(ok).length !== 1 || outboxEntries(ok)[0].catches !== 'whole-test bots') bad('checks/outbox.mjs did not read a line\'s three parts');
+  if (!outboxProblems('- 2026-11-01 | a | b\n', now).some((p) => /waited 30 days/.test(p))) bad('checks/outbox.mjs passed a line that waited a month');
+  if (outboxProblems('- 2026-11-17 | a | b\n', now).length) bad('checks/outbox.mjs failed a line 14 days old');
+  if (!outboxProblems('- a lesson with no date | b | c\n', now).length) bad('checks/outbox.mjs passed a line with no date');
+  if (!outboxProblems('- 2026-11-28 | only two parts\n', now).length) bad('checks/outbox.mjs passed a line with two parts');
+  if (!outboxProblems('- 2026-12-25 | a | b\n', now).length) bad('checks/outbox.mjs passed a line dated in the future');
+  if (!outboxProblems(null, now).length) bad('checks/outbox.mjs passed a missing outbox');
+  const tpl = existsSync(join(ROOT, 'templates/OUTBOX.md')) ? readFileSync(join(ROOT, 'templates/OUTBOX.md'), 'utf8') : null;
+  if (tpl === null) bad('templates/OUTBOX.md is missing');
+  else if (outboxProblems(tpl, now).length || outboxEntries(tpl).length) bad('templates/OUTBOX.md must be an empty outbox (its example line must not start a line with "- ")');
+}
+
 /* ---------- the project list and what a new project copies ---------- */
 {
   let list = null;
@@ -160,4 +178,4 @@ for (const [name, opts, prompt, id, ...rest] of cases) {
 }
 
 if (problems.length) { console.error(problems.map(p => '✗ ' + p).join('\n')); console.error(`\n${problems.length} problem(s).`); process.exit(1); }
-console.log(`✓ ${briefs.length} briefs, the lessons log, the shared cues, cross-item, no-passage and sync-check are in order.`);
+console.log(`✓ ${briefs.length} briefs, the lessons log, the shared cues, cross-item, no-passage, the outbox rule and sync-check are in order.`);
