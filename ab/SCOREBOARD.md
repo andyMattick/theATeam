@@ -1,9 +1,12 @@
 # Scoreboard: with and without the team
 
-One row a run (ABTEST.md). "Bad answers" are a wrong key, two right answers, no right answer, a giveaway, or a false
-or off-source claim, confirmed by the lead. A gap under 15 points on a bot, or one FIX either way, is "no real
-difference". A claim about the team needs at least four runs across more than one subject.
+One row a run (ABTEST.md). Three arms: **plain** (one session), **lean** (maker with the brief and scripts, one blind
+solver, one fix round) and **team** (the full process). "Bad" is a wrong key, two right answers, no right answer, a
+giveaway, a false or off-source claim, or a right typed answer that would be marked wrong, confirmed by the lead;
+"FIX" is every other confirmed finding. A gap under 15 points on a bot, or one FIX either way, is "no real
+difference". A claim about an arm needs at least four runs; a claim about a kind of content needs that job run more
+than once.
 
-| Date | Job | Bad answers: plain | Bad answers: team | Other FIX: plain | Other FIX: team | Worst bot: plain | Worst bot: team | Cost: plain | Cost: team | Verdict | Report |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| 2026-11-14 | sci-water-cycle | 0 bad answers, 2 giveaways | 0 bad answers, 0 giveaways | 3 | 1 | longest 50%, crossVote 43.3% | overlap 33.3%, quoteEcho 20% | 1 session, ~85k tokens | 4 sessions, ~374k tokens | Team harder to guess; no real difference on keys, facts, coverage; plain slightly harder level 3 | [report](2026-11-14-sci-water-cycle.md) |
+| Date | Job (kind) | Plain: bad / FIX | Lean: bad / FIX | Team: bad / FIX | Worst bot: plain / lean / team | Sessions: plain / lean / team | Verdict | Report |
+|---|---|---|---|---|---|---|---|---|
+| 2026-11-14 | sci-water-cycle (multiple choice from a passage) | 2 / 3 | not run (the lean arm was added after this run) | 0 / 1 | 50% / n/a / 33.3% | 1 / n/a / 4 | Team harder to guess; no real difference on keys, facts, coverage; plain's level 3 slightly harder | [report](2026-11-14-sci-water-cycle.md) |

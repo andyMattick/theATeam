@@ -70,3 +70,5 @@ where the maker stays inside the source.
 - The judges are Claude, like both arms. What all of them miss is invisible here.
 - The first judge to report described the questions closely enough that the lead could tell which quiz was which
   before the other two reported. The judges themselves never knew.
+- This run had two arms. The lean arm (maker with the brief and scripts, one blind solver, one fix round) was added
+  the same day, with seven more jobs; from the next run every comparison has three arms.
