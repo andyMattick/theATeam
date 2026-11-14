@@ -1,7 +1,7 @@
 # The weekly run
 
 One run a week, by one lead session, through every project in `projects.json`. What it is for: `IMPROVEMENT.md`.
-This file is the steps. Cap: about $10 for the whole run. Changes go out as pull requests; the lead merges one when
+This file is the steps. Cap: about $12 for the whole run (the comparison is $8 of it). Changes go out as pull requests; the lead merges one when
 its checks are green, and leaves a change to a project's sensitive paths for the owner.
 
 ## Before starting
@@ -30,10 +30,10 @@ its checks are green, and leaves a change to a project's sensitive paths for the
 
 ## Once a run
 6. **The with-and-without comparison** (`ABTEST.md`). It is the practice job: the next job in `ab/prompts.json` is done
-   once by one plain session and once by the team, and both are judged the same way by fresh readers who don't know
-   which is which. Capped at $5. Write `ab/<date>-<job>.md`, add the row to `ab/SCOREBOARD.md`, and write what it
-   teaches into `LESSONS.md`, whichever way it points. "No real difference" and "the plain arm did better" are
-   findings: they also go to `STREAMLINE.md`.
+   by one plain session, by a lean team and by the full team, and all three are judged the same way by fresh judges
+   who don't know which is which. Capped at $8. Write `ab/<date>-<job>.md`, save the sets in `ab/runs/`, add the row
+   to `ab/SCOREBOARD.md`, and write what it teaches into `LESSONS.md`, whichever way it points. "No real difference"
+   and "a cheaper arm did as well" are findings: they also go to `STREAMLINE.md`.
 7. **Send lessons back out.** If steps 3 to 6 changed anything here, merge it, then sync every project again (step 1)
    so they all end the run on the same version.
 8. **The report**: `weekly/<date>.md` here. For each project: what was synced, what the checks found, what was fixed,

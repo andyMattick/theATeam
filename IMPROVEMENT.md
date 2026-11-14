@@ -6,7 +6,7 @@ from evidence, in pull requests that pass the checks. It never loosens a rule by
 | When | What | Cap |
 |---|---|---|
 | After every job | The auditor's pass | about $1.50 |
-| Every week | Sync, a practice job, real-use signals, debt, one report | about $10 across all projects |
+| Every week | Sync, the with-and-without comparison (`ABTEST.md`), real-use signals, debt, one report | about $12 across all projects |
 | Every month | The streamline check (`STREAMLINE.md`) | about $10 |
 | On a new Claude model, and once a term | The benchmark compare and the baseline again | about $10 |
 
@@ -29,14 +29,16 @@ One run, one project after another, in this order.
    behind). Then the project's scripts run on **all its existing content** with the new patterns. This is how a lesson
    from one project reaches the others. A bad answer the new pattern finds is fixed now. Anything else goes on the
    project's known-failing list, which can only shrink.
-2. **A practice job.** One made-up order or unit, in a different project each week, through all nine stages, with a
-   $5 cap (Planning Period's Friday test). What it shows goes to the auditor like any job.
+2. **The with-and-without comparison** (`ABTEST.md`). One made-up job, a different kind each week, done by one plain
+   session, a lean team and the full team, and judged blind, with an $8 cap. It is the practice job (it grew out of
+   Planning Period's Friday test), and what it shows goes to the auditor like any job, including when a cheaper arm
+   does as well.
 3. **Real-use signals.** Student miss rates, what grown-ups and teachers asked for, what the tutor was asked: counts
    only, never names or work. A signal counts when it shows up twice, or once if serious. Items most students miss or
    nobody misses change the level they are filed under (Pet World's weekly learning review; the idea behind Teacher
    Suite's planned analyzer).
 4. **Debt.** The worst items on each known-failing list are fixed. The lists are shorter at the end than at the start.
-5. **One report** for the owner, across all projects: what was synced, what the practice job found, what changed in
+5. **One report** for the owner, across all projects: what was synced, the comparison's verdict, what changed in
    which brief and why, what is left for next week, what it cost.
 
 Fixes go out as pull requests that merge when the project's own checks pass. A change to a project's sensitive paths

@@ -27,7 +27,7 @@ Set up Nov 13, 2026 from a survey of four projects. Each had grown its own team;
 | `scripts/sync-check.mjs` | Run from a project: fails when its copy of a team file is behind |
 | `projects.json` | The projects on the team; the weekly run goes through it |
 | `WEEKLY.md` | The steps of the weekly run |
-| `ABTEST.md`, `ab/` | The weekly with-and-without comparison: the same job done by one plain session and by the team, judged blind; reports and the scoreboard |
+| `ABTEST.md`, `ab/` | The weekly with-and-without comparison: the same job done by one plain session, a lean team and the full team, judged blind; eight jobs covering what the four apps make; reports and the scoreboard |
 | `weekly/` | The weekly run's reports, one a week |
 | `templates/` | What a new project copies: its check script, its adapter, the section for its instructions file |
 

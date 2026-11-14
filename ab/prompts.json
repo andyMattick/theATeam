@@ -1,12 +1,16 @@
 {
-  "about": "Made-up jobs for the with-and-without comparison (ABTEST.md). One is used a run, taking turns. Sources are written for this file: no real class, teacher or order. Every arm gets exactly `request` plus the job's `source` and `ideas`, and returns the JSON shape in ABTEST.md.",
-  "request": "Write a quiz on the source below for the grade given. Exactly 10 multiple-choice questions, 4 choices each, exactly one right answer. About 4 of the 10 should be level 3 (harder in the skill itself, not just longer), the rest level 1 or 2. Use nothing that isn't in the source. Tag every question with the id of the one idea it mainly tests. Return only the JSON described in the output format.",
+  "about": "Made-up jobs for the with-and-without comparison (ABTEST.md). One is used a run, taking turns, so that over eight runs every kind of content the owner's four apps make is tested. Sources are written for this file: no real class, teacher or order. Every arm gets exactly `request`, the job's `ask`, its source and ideas, and the output format in ABTEST.md.",
+  "request": "Write the set described under ASK, for the grade given, from the source below. Use nothing that isn't in the source. Tag every item with the id of the one idea it mainly tests. About 40% of the items should be level 3 (harder in the skill itself, not just longer); the rest level 1 or 2. Return only the JSON described in the output format.",
   "jobs": [
     {
       "id": "sci-water-cycle",
+      "kind": "A multiple-choice quiz from a science passage",
+      "apps": "Planning Period (quiz from a teacher's source); Pet World (Biology and History library units)",
       "subject": "science",
       "grade": 5,
       "title": "Where the Puddle Went",
+      "ask": "Exactly 10 multiple-choice questions, 4 choices each, exactly one right answer.",
+      "mix": { "mc": 10 },
       "source": "After a rainstorm, a puddle sits in the schoolyard. By the next afternoon it is gone. The water did not vanish. Energy from the sun warmed the puddle, and the liquid water slowly changed into an invisible gas called water vapor. This change from liquid to gas is called evaporation. Evaporation happens faster when it is warm and windy, and slower when it is cool and still.\n\nWater vapor rises with warm air. High above the ground the air is colder. When water vapor cools, it changes back into tiny drops of liquid water. This change from gas to liquid is called condensation. The drops gather around bits of dust in the air, and billions of them together form a cloud. You can see condensation on the ground too: the outside of a cold glass gets wet on a humid day because water vapor in the air touches the cold glass and turns to liquid.\n\nInside a cloud, the tiny drops bump into each other and join. When the drops grow too heavy for the air to hold up, they fall. Water that falls from clouds is called precipitation. Rain, snow, sleet and hail are all precipitation.\n\nSome of the water that reaches the ground soaks into the soil, where plant roots can take it in. Some of it runs downhill over the surface into streams, rivers and lakes. This flowing water is called runoff. Sooner or later the sun warms that water as well, and it evaporates again. Because the same water keeps moving through these steps, scientists call it the water cycle. No new water is made, and none is used up.",
       "ideas": [
         { "id": "i1", "idea": "Evaporation: the sun's energy changes liquid water into water vapor, an invisible gas" },
@@ -21,9 +25,13 @@
     },
     {
       "id": "hist-marrow-creek",
+      "kind": "A mixed assessment: multiple choice, true or false, and short answers with rubrics",
+      "apps": "Teacher Suite (Content Studio assessments); Planning Period (tests); Pet World (History units with written answers)",
       "subject": "social studies",
       "grade": 6,
       "title": "How Marrow Creek Changed (a made-up town)",
+      "ask": "Exactly 10 items: 6 multiple-choice questions (4 choices each), 2 true-or-false statements (one true, one false), and 2 short answers. Each short answer has a model answer and a rubric of 2 to 4 points made of yes-or-no rows worth 1 or 2 points each.",
+      "mix": { "mc": 6, "tf": 2, "short": 2 },
       "source": "Marrow Creek is a made-up town. Everything a quiz says about it must come from this page.\n\nMarrow Creek began in 1848 as a ferry landing. Travelers heading west had to cross the Tolland River, and a family named Okafor ran the only ferry for twenty miles. A general store and a blacksmith opened beside the landing because travelers waiting for the ferry needed supplies and repairs.\n\nIn 1871 a railroad company built a bridge over the river three miles upstream, at a place called Harlan's Bend. Within five years most travelers crossed by train, and the ferry made only two trips a day. The store and the blacksmith both moved to Harlan's Bend. The town's own records show its population falling from 640 in 1870 to 210 in 1880.\n\nThe people who stayed turned to farming. The soil near the creek was good for apples, and in 1893 the growers formed a cooperative so they could share one packing house and bargain together for lower shipping prices. By 1910 Marrow Creek shipped more apples than any other town in the county, and the population had climbed back to 580.\n\nPeople in Marrow Creek tell this history in two ways. The town's Founders Day speech, given every June, says the town was saved by the hard work of its farmers. A diary kept by the ferryman's daughter, Adaeze Okafor, tells it differently. She wrote in 1879 that many families did not choose to stay: they were too poor to move, and the first orchards were planted on land that had become cheap because so many neighbors had left.\n\nHistorians who study the town use both the speech and the diary. They also use the population records and the cooperative's shipping ledgers, because those were written at the time for practical reasons and not to make anyone look good.",
       "ideas": [
         { "id": "i1", "idea": "The town began in 1848 as a ferry landing; businesses opened because waiting travelers needed things" },
@@ -38,10 +46,14 @@
     },
     {
       "id": "math-ratios",
+      "kind": "Math practice with typed number answers and multiple choice, every key worked out",
+      "apps": "Pet World (math shops); Planning Period (math worksheets and quizzes)",
       "subject": "math",
       "grade": 6,
       "title": "Ratios and unit rates",
-      "source": "There is no passage. Write the quiz on these skills, with made-up, realistic situations. Every number in a right answer must be worked out exactly; show the working in `why`.\n\nSkill notes for the grade: a ratio compares two quantities in a stated order (3 red to 5 blue is 3:5, not 5:3). Equivalent ratios multiply or divide both parts by the same number. A unit rate is the amount for one unit (240 miles in 4 hours is 60 miles per hour). To compare two deals, find each unit price. A ratio can compare a part to a part or a part to the whole, and the question must make clear which.",
+      "ask": "Exactly 10 items: 5 with a typed number answer (give `answer`, and in `accept` every other form a student could fairly type, such as 2.5 and 5/2) and 5 multiple-choice questions (4 choices each). Use made-up, realistic situations. Work every right answer out exactly and show the working in `why`.",
+      "mix": { "numeric": 5, "mc": 5 },
+      "source": "There is no passage. Write the set on these skills.\n\nSkill notes for the grade: a ratio compares two quantities in a stated order (3 red to 5 blue is 3:5, not 5:3). Equivalent ratios multiply or divide both parts by the same number. A unit rate is the amount for one unit (240 miles in 4 hours is 60 miles per hour). To compare two deals, find each unit price. A ratio can compare a part to a part or a part to the whole, and the question must make clear which.",
       "ideas": [
         { "id": "i1", "idea": "Write a ratio in the order the words give" },
         { "id": "i2", "idea": "Part to part against part to whole" },
@@ -53,9 +65,14 @@
     },
     {
       "id": "ela-lantern",
+      "kind": "A reading quiz on a story: multiple choice with one Part A / Part B pair, and short answers that quote the text",
+      "apps": "Planning Period (reading quizzes); Pet World (English reading units, two-part questions)",
       "subject": "reading",
       "grade": 5,
       "title": "The Lantern on Pike Hill",
+      "ask": "Exactly 10 items: 8 multiple-choice questions (4 choices each) and 2 short answers. Two of the multiple-choice questions, one right after the other, form a pair: the first begins \"Part A:\" and the second begins \"Part B:\" and asks which detail from the story best supports the answer to Part A. Each short answer asks the student to quote words from the story as evidence, and has a model answer and a rubric of 2 to 4 points made of yes-or-no rows worth 1 or 2 points each. Every question must need the story: a student who has not read it should not be able to answer.",
+      "mix": { "mc": 8, "short": 2 },
+      "pair": true,
       "source": "[1] Every evening at dusk, Old Tomas climbed Pike Hill and lit the lantern on its iron post. Nobody in the village could remember why. The fishing boats had used a new harbor on the far side of the bay for thirty years, and no boat had passed Pike Hill in all that time.\n\n[2] Inez thought it was silly, and she said so. \"You're lighting the way for nobody,\" she told him, the summer she turned eleven.\n\n[3] Tomas only smiled and handed her the oil can. \"Carry this up for me, then. My knees aren't what they were.\"\n\n[4] So Inez carried the oil, grumbling the whole way. She carried it the next evening as well, and the one after. She told herself she was only being polite. But she noticed that she had started watching the sky in the afternoons, judging when the light would begin to fail.\n\n[5] In October a storm came down the coast faster than anyone expected. Tomas was in bed with a fever. The wind tore a shutter off the bakery. Inez stood at her window and looked at the dark shape of Pike Hill, and for a long moment she did not move.\n\n[6] Then she took the oil can from its hook.\n\n[7] The climb took twice as long as usual. Twice the wind blew out her match. The third one caught, and the lantern glowed against the rain.\n\n[8] She was halfway down when she saw it: a small boat, far off course, turning slowly toward the light. It was the doctor's skiff, coming back from the island, and it had lost the harbor in the dark.\n\n[9] The next evening Inez was on the hill before dusk. She did not grumble, and nobody asked her why she had come.",
       "ideas": [
         { "id": "i1", "idea": "Setting and situation: the lantern is lit each dusk though no boat has passed in thirty years" },
@@ -66,6 +83,87 @@
         { "id": "i6", "idea": "The climb: what makes it hard, and that she keeps trying" },
         { "id": "i7", "idea": "The doctor's skiff: the light matters after all" },
         { "id": "i8", "idea": "The ending and theme: she comes without being asked; a duty can matter even when you can't see who it is for" }
+      ]
+    },
+    {
+      "id": "stats-bus-routes",
+      "kind": "Exam-style statistics: stand-alone multiple choice, a set of three on one prompt, and a free-response question with a 10-point rubric",
+      "apps": "First Move: AP Statistics (question bank, shared-prompt sets, FRQs)",
+      "subject": "statistics",
+      "grade": 12,
+      "title": "Two bus routes",
+      "ask": "Exactly 9 items. 5 stand-alone multiple-choice questions (4 choices each); each must make sense with the source alone. Then one set of 3 multiple-choice questions that share one extra prompt you write (put it in `sets` and give the three items its id in `set`); the three must test different things and none may help answer another. Then 1 free-response question in parts, with a full model answer in context, a rubric whose yes-or-no rows are worth 1 or 2 points and add to exactly 10, a hint that points at the first step and gives nothing away, and 2 to 4 common mistakes. Use only the numbers in the source: do not compute a new test or interval.",
+      "mix": { "mc": 8, "frq": 1 },
+      "set": 3,
+      "source": "A city transit office wants to know whether its two bus routes from Elm Park to downtown differ in mean morning travel time. From last month's records it takes a random sample of 40 morning trips on Route A and, separately, a random sample of 36 morning trips on Route B. Each route ran more than 1,200 morning trips last month.\n\nRoute A: n = 40, sample mean 31.2 minutes, sample standard deviation 6.1 minutes.\nRoute B: n = 36, sample mean 28.4 minutes, sample standard deviation 5.3 minutes.\n\nDotplots of the two samples show no strong skew and no outliers.\n\nThe office tests H0: muA − muB = 0 against Ha: muA − muB ≠ 0, where muA and muB are the true mean morning travel times, in minutes, of all last month's morning trips on each route. A two-sample t test gives t = 2.14 with about 73.9 degrees of freedom and a P-value of 0.036. A 95% confidence interval for muA − muB is (0.2, 5.4) minutes. The office uses a significance level of 0.05.\n\nThe trips were not assigned to routes: each route simply ran its own schedule.",
+      "ideas": [
+        { "id": "i1", "idea": "Name the parameter in context: the difference in true mean morning travel times of all last month's trips on each route" },
+        { "id": "i2", "idea": "Choose the procedure: two independent random samples, means, so a two-sample t test (not paired, not proportions)" },
+        { "id": "i3", "idea": "Conditions: random samples; independent (each sample under 10% of the trips); large samples or no strong skew or outliers in each" },
+        { "id": "i4", "idea": "What the test statistic t = 2.14 measures: the observed difference in standard errors from 0" },
+        { "id": "i5", "idea": "Interpret the P-value 0.036: if the true means were equal, the chance of a difference this large or larger in either direction" },
+        { "id": "i6", "idea": "Conclusion in context at the 0.05 level: reject H0; convincing evidence the true mean travel times differ" },
+        { "id": "i7", "idea": "The interval (0.2, 5.4) agrees with the test: 0 is not in it; it gives plausible sizes of the difference" },
+        { "id": "i8", "idea": "Limits: no random assignment, so no cause; the result is about last month's morning trips on these routes" }
+      ]
+    },
+    {
+      "id": "lesson-area",
+      "kind": "Lesson practice: number answers that rise from easy to hard, \"which student is right\" questions, and fill-in vocabulary",
+      "apps": "Teacher Suite (Unit Builder lessons: practice in three tiers, vocabulary); Planning Period (guided notes and worksheets)",
+      "subject": "math",
+      "grade": 6,
+      "title": "Area of parallelograms and triangles",
+      "ask": "Exactly 10 items for one lesson's practice: 6 with a typed number answer, in this order: 2 easy (level 1), 2 medium (level 2), 2 hard (level 3); give `answer` and, in `accept`, every other form a student could fairly type, and say the unit in the prompt. Then 2 multiple-choice questions (4 choices each) of the kind \"two students worked this; who is right, and why?\". Then 2 fill-in vocabulary items: a sentence with one blank, and in `accept` every word or phrase that should count. Use made-up, realistic situations and whole numbers or simple decimals. Work every right answer out and show the working in `why`.",
+      "mix": { "numeric": 6, "mc": 2, "fill": 2 },
+      "source": "There is no passage. Write the practice on these notes.\n\nLesson notes: the area of a parallelogram is base × height. The height is the perpendicular distance between the base and the opposite side; it is not the length of the slanted side. A parallelogram can be cut and rearranged into a rectangle with the same base and height, which is why the rule works. The area of a triangle is one half × base × height, because two copies of a triangle make a parallelogram with the same base and height. Any side can be the base, as long as the height is measured perpendicular to that side. Area is measured in square units. To find a missing base or height when the area is known, divide: for a parallelogram, height = area ÷ base; for a triangle, height = (2 × area) ÷ base.\n\nVocabulary for the lesson: base, height, perpendicular, parallelogram, square units.",
+      "ideas": [
+        { "id": "i1", "idea": "Area of a parallelogram is base × height" },
+        { "id": "i2", "idea": "The height is perpendicular to the base, not the slanted side" },
+        { "id": "i3", "idea": "Area of a triangle is one half × base × height, and why (two triangles make a parallelogram)" },
+        { "id": "i4", "idea": "Any side can be the base if the height goes with it" },
+        { "id": "i5", "idea": "Find a missing base or height from the area" },
+        { "id": "i6", "idea": "Vocabulary and units: base, height, perpendicular, square units" }
+      ]
+    },
+    {
+      "id": "gram-commas",
+      "kind": "A grammar bank: multiple choice where the same rule names and sentence forms come back as choices",
+      "apps": "Pet World (English grammar units, where category answers are reused on purpose)",
+      "subject": "grammar",
+      "grade": 6,
+      "title": "Commas: series, introductions and joining sentences",
+      "ask": "Exactly 10 multiple-choice questions, 4 choices each, exactly one right answer. Mix the kinds: which sentence is punctuated correctly; where the comma goes; which rule a sentence shows; what is wrong with a sentence. Write your own example sentences.",
+      "mix": { "mc": 10 },
+      "source": "There is no passage. Write the questions on these rules, with your own example sentences.\n\nRule 1, items in a series: use commas to separate three or more items in a list (We packed apples, cheese, and bread). Two items joined by and need no comma.\n\nRule 2, introductory words and phrases: put a comma after an introductory word, phrase or clause that comes before the main part of the sentence (After the game, we walked home. Yes, I finished it.).\n\nRule 3, joining two complete sentences: when two complete sentences are joined by and, but, or, so, yet, for or nor, put a comma before that joining word (The bell rang, and the class lined up). If what follows the joining word is not a complete sentence, use no comma (The bell rang and startled the class).\n\nRule 4, the comma splice: a comma alone cannot join two complete sentences (wrong: The bell rang, the class lined up). Fix it with a joining word after the comma, with a period, or with a semicolon.\n\nA complete sentence has a subject and a verb and can stand alone.",
+      "ideas": [
+        { "id": "i1", "idea": "Commas separate three or more items in a series" },
+        { "id": "i2", "idea": "Two items joined by and take no comma" },
+        { "id": "i3", "idea": "A comma follows an introductory word, phrase or clause" },
+        { "id": "i4", "idea": "A comma goes before the joining word between two complete sentences" },
+        { "id": "i5", "idea": "No comma before the joining word when what follows is not a complete sentence" },
+        { "id": "i6", "idea": "A comma alone cannot join two complete sentences (the comma splice), and how to fix it" },
+        { "id": "i7", "idea": "What makes a complete sentence: a subject and a verb, able to stand alone" }
+      ]
+    },
+    {
+      "id": "ab-fractions",
+      "kind": "One quiz in two matched versions, A and B",
+      "apps": "Planning Period (A/B versions of quizzes and tests)",
+      "subject": "math",
+      "grade": 5,
+      "title": "Adding and subtracting fractions with unlike denominators",
+      "ask": "Exactly 12 multiple-choice questions (4 choices each): a 6-question quiz in two versions. Give each item `version` \"A\" or \"B\" and use the same ids in both (q1 to q6). Question for question, B tests the same idea at the same level as A with different numbers and a different story; B reuses none of A's choice texts; and the right answer never sits under the same letter in A and B. B must be no easier than A. Give every answer in simplest form. Work every right answer out and show the working in `why`.",
+      "mix": { "mc": 12 },
+      "versions": ["A", "B"],
+      "source": "There is no passage. Write the quiz on these notes.\n\nSkill notes for the grade: to add or subtract fractions with unlike denominators, rewrite them as equivalent fractions with a common denominator, then add or subtract the numerators and keep the denominator. The least common denominator keeps the numbers small, but any common denominator works. Write the answer in simplest form. Mixed numbers can be added by adding the whole numbers and the fractions separately, regrouping when the fraction part reaches 1 or more; to subtract when the first fraction part is smaller, regroup 1 whole into the fraction. Common mistakes: adding the numerators and adding the denominators (1/2 + 1/3 is not 2/5); changing a denominator without changing its numerator; forgetting to simplify; forgetting to regroup. An estimate with benchmarks (0, 1/2, 1) shows whether an answer is reasonable.",
+      "ideas": [
+        { "id": "i1", "idea": "Add two fractions with unlike denominators" },
+        { "id": "i2", "idea": "Subtract two fractions with unlike denominators" },
+        { "id": "i3", "idea": "Add mixed numbers, regrouping when the fraction part reaches 1" },
+        { "id": "i4", "idea": "Subtract mixed numbers when the first fraction part is smaller" },
+        { "id": "i5", "idea": "Spot the mistake: numerators and denominators both added, or a denominator changed without its numerator" },
+        { "id": "i6", "idea": "Use an estimate with benchmarks to judge whether an answer is reasonable" }
       ]
     }
   ]
