@@ -39,9 +39,10 @@ Fewer than 5 runs that aren't ties: "no difference shown", and say so.
 1. Is the lean arm better than the plain arm?
 2. Is the full team better than the lean arm? If not, the lean arm is the default for that kind of content, and the
    extra steps are a case for the owner (`STREAMLINE.md`).
-3. Does the answer change with the kind of content? Each job is run twice so this can be seen, not proved.
+3. Does the answer change with the kind of content? Each kind is run twice so this can be seen, not proved.
 
-**How many runs.** Sixteen counted runs: every job twice, two jobs a week, so eight weekly runs from Nov 14, 2026.
+**How many runs.** Sixteen counted runs: every kind of content twice, each time from a different source, two jobs a
+week, so eight weekly runs from Nov 14, 2026.
 If questions 1 or 2 are still "no difference shown" at sixteen, run eight more before saying anything to anyone else.
 
 **A person checks the judges.** For at least 3 of the 16 runs, the owner or another teacher rates the same three
@@ -50,7 +51,13 @@ person's count of bad answers beside the judges'. If they disagree on which arm 
 results are not presented to anyone as evidence.
 
 **Changing any of this.** A change to a measure, a rule or a job is dated here with its reason, and runs before and
-after it are reported apart. The comparison is evidence about the checking of written content by AI judges. It is not
+after it are reported apart.
+- *Nov 14, 2026, before any counted run:* the second round uses a **new source of the same kind**, not the same job
+  again, and the science-passage slot of round 1 uses a new passage too, because the pilot was run on the water
+  cycle. Reason: the lean and team makers read `LESSONS.md`, which holds lessons from earlier runs; on a repeated
+  source they would have notes about that exact assignment and the plain arm would not. Sixteen counted runs are now
+  sixteen different sources, two of each kind. Lessons written from a comparison are about the kind of content,
+  never about a source's details. The comparison is evidence about the checking of written content by AI judges. It is not
 evidence about what students learn: only real results show that.
 
 ## The three arms
@@ -67,19 +74,20 @@ The plain arm is not made weak on purpose. It is today's Claude, asked well. The
 team has to beat the lean one by enough to pay for its extra sessions.
 
 ## The jobs: every kind of content the four apps make
-`ab/prompts.json` has eight made-up jobs. Two are used each week, in order, so four weeks go once round and eight
-weeks go round twice.
+`ab/prompts.json` has seventeen made-up jobs: the pilot's, then eight for round 1 and eight for round 2. Two are used
+each week, in the order they are listed, so each round takes four weeks. Each kind of content is tested twice, from
+two different sources.
 
-| Job | Kind | Like what |
-|---|---|---|
-| `sci-water-cycle` | A multiple-choice quiz from a science passage | Planning Period quizzes; Pet World library units |
-| `hist-marrow-creek` | A mixed assessment: multiple choice, true or false, short answers with rubrics | Teacher Suite assessments; Planning Period tests; Pet World written answers |
-| `math-ratios` | Math with typed number answers and multiple choice, every key worked | Pet World math shops; Planning Period math |
-| `ela-lantern` | A reading quiz: a Part A / Part B pair, short answers that quote the text | Planning Period reading quizzes; Pet World two-part questions |
-| `stats-bus-routes` | Exam-style statistics: stand-alone questions, a set of three on one prompt, a free response with a 10-point rubric | First Move: AP Statistics |
-| `lesson-area` | Lesson practice in three tiers, "who is right" questions, fill-in vocabulary | Teacher Suite lessons; Planning Period notes and worksheets |
-| `gram-commas` | A grammar bank where rule names and sentence forms come back as choices | Pet World English units |
-| `ab-fractions` | One quiz in two matched versions | Planning Period A/B versions |
+| Kind | Like what | Round 1 | Round 2 |
+|---|---|---|---|
+| A multiple-choice quiz from a science passage | Planning Period quizzes; Pet World library units | `sci-seedlings` (pilot: `sci-water-cycle`) | `sci-sound` |
+| A mixed assessment: multiple choice, true or false, short answers with rubrics | Teacher Suite assessments; Planning Period tests; Pet World written answers | `hist-marrow-creek` | `hist-port-wren` |
+| Math with typed number answers and multiple choice, every key worked | Pet World math shops; Planning Period math | `math-ratios` | `math-percents` |
+| A reading quiz: a Part A / Part B pair, short answers that quote the text | Planning Period reading quizzes; Pet World two-part questions | `ela-lantern` | `ela-ferry-bell` |
+| Exam-style statistics: stand-alone questions, a set of three on one prompt, a free response with a 10-point rubric | First Move: AP Statistics | `stats-bus-routes` | `stats-lunch-menu` |
+| Lesson practice in three tiers, "who is right" questions, fill-in vocabulary | Teacher Suite lessons; Planning Period notes and worksheets | `lesson-area` | `lesson-mean-median` |
+| A grammar bank where rule names and sentence forms come back as choices | Pet World English units | `gram-commas` | `gram-agreement` |
+| One quiz in two matched versions | Planning Period A/B versions | `ab-fractions` | `ab-decimals` |
 
 `npm run check` fails if the bank stops covering an item type (multiple choice, true or false, typed number, fill-in,
 short answer, free response, a pair, a set, two versions) or stops having a job like each of the four apps. What the
@@ -91,8 +99,9 @@ In `scripts/ab-score.mjs` (`OUTPUT_FORMAT`) and printed with the prompt: one JSO
 `id`, `idea`, `level`, `type`, `prompt`, `why`, and the fields its type needs.
 
 ## The steps
-1. **Pick the jobs**: the next two in `ab/prompts.json` after the last report in `ab/` (after the eighth comes the
-   first). Do steps 2 to 9 for each, one job at a time, with fresh sessions for everything.
+1. **Pick the jobs**: the next two in `ab/prompts.json`, in the order listed, that have no report in `ab/` yet. Skip
+   the pilot's job. A job is never run twice. Do steps 2 to 9 for each, one job at a time, with fresh sessions for
+   everything.
 2. **Run the plain arm** in one fresh session. Save its set. Note its tokens (and dollars, where the session shows them).
 3. **Run the lean arm** and **the team arm**, each from fresh sessions that share nothing with the other arm. For each,
    save the draft (before the fix round) and the final. Note sessions, tokens and dollars for each step.
@@ -115,6 +124,8 @@ In `scripts/ab-score.mjs` (`OUTPUT_FORMAT`) and printed with the prompt: one JSO
 8. **Unblind and write the report**: `ab/<date>-<job>.md`, from the layout below. Save the sets in
    `ab/runs/<date>-<job>/`. Add one row to `ab/SCOREBOARD.md`.
 9. **Lessons.** Whatever the comparison shows goes to `LESSONS.md` with the next id, whichever way it points:
+   - write it about the kind of content, never about the source's details, so a later run on another source of that
+     kind is not handed the answers;
    - an arm did better at something → say which step earned it (already right in the draft, or the fix round?);
    - **no difference, or a cheaper arm did as well or better** → say so plainly. That is a finding, not a failure. It
      goes to `STREAMLINE.md` as evidence for that step, and three runs the same way make it a case for the owner;

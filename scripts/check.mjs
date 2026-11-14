@@ -180,6 +180,16 @@ for (const [name, opts, prompt, id, ...rest] of cases) {
       Object.keys(mix).forEach((t) => kinds.add(t)); if (j.pair) kinds.add('pair'); if (j.set) kinds.add('set'); if (j.versions) kinds.add('versions');
       if (!promptText({ ...j, request: bank.request }).includes(j.ask)) bad(`ab/prompts.json: job ${j.id}'s prompt text doesn't carry its ask`);
     }
+    // rounds: one pilot job, then every kind of content once in round 1 and once in round 2, from different sources
+    const round = (r) => (bank.jobs || []).filter((j) => j.round === r);
+    for (const j of bank.jobs || []) if (!['pilot', 1, 2].includes(j.round)) bad(`ab/prompts.json: job ${j.id} needs "round": "pilot", 1 or 2`);
+    if (round(1).length !== 8 || round(2).length !== 8) bad(`ab/prompts.json: round 1 has ${round(1).length} jobs and round 2 has ${round(2).length}; each needs 8 for the sixteen counted runs`);
+    for (const r of [1, 2]) if (new Set(round(r).map((j) => j.kind)).size !== round(r).length) bad(`ab/prompts.json: round ${r} has two jobs of the same kind`);
+    for (const j of round(1)) if (!round(2).some((k) => k.kind === j.kind && JSON.stringify(k.mix) === JSON.stringify(j.mix) && k.ask === j.ask)) bad(`ab/prompts.json: no round 2 job matches ${j.id}'s kind, ask and mix`);
+    const srcs = (bank.jobs || []).map((j) => j.source);
+    if (new Set(srcs).size !== srcs.length) bad('ab/prompts.json: two jobs share a source; a counted run must never reuse one');
+    const idx = (r) => (bank.jobs || []).map((j, n) => (j.round === r ? n : -1)).filter((n) => n >= 0);
+    if (Math.max(...idx(1)) > Math.min(...idx(2))) bad('ab/prompts.json: every round 1 job must be listed before the round 2 jobs (they are run in the order listed)');
     for (const k of [...TYPES, 'pair', 'set', 'versions']) if (!kinds.has(k)) bad(`ab/prompts.json: no job asks for "${k}", so that kind of content is never compared`);
     for (const app of ['Pet World', 'Planning Period', 'AP Statistics', 'Teacher Suite']) if (!(bank.jobs || []).some((j) => (j.apps || '').includes(app))) bad(`ab/prompts.json: no job is like what ${app} makes`);
 
@@ -257,7 +267,7 @@ for (const [name, opts, prompt, id, ...rest] of cases) {
   // the measures were fixed before the counted runs: the section, its primary measure and its rule for a win must stay
   if (existsSync(join(ROOT, 'ABTEST.md'))) {
     const t = readFileSync(join(ROOT, 'ABTEST.md'), 'utf8');
-    for (const m of ['## The measures, fixed on Nov 14, 2026', '**Primary measure: confirmed bad answers for every 10 items.**', 'at least 1 fewer bad answer for every 10 items', '| Wins needed | 5 | 6 | 7 | 7 | 8 | 9 | 9 | 10 | 10 | 11 | 12 | 12 |', '**Changing any of this.**'])
+    for (const m of ['## The measures, fixed on Nov 14, 2026', '**Primary measure: confirmed bad answers for every 10 items.**', 'at least 1 fewer bad answer for every 10 items', '| Wins needed | 5 | 6 | 7 | 7 | 8 | 9 | 9 | 10 | 10 | 11 | 12 | 12 |', '**Changing any of this.**', 'the second round uses a **new source of the same kind**'])
       if (!t.includes(m)) bad(`ABTEST.md no longer has "${m}": the measures were fixed in advance; a change is dated in that section with its reason, and this check is changed with it`);
   }
 }

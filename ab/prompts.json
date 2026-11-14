@@ -1,5 +1,5 @@
 {
-  "about": "Made-up jobs for the with-and-without comparison (ABTEST.md). One is used a run, taking turns, so that over eight runs every kind of content the owner's four apps make is tested. Sources are written for this file: no real class, teacher or order. Every arm gets exactly `request`, the job's `ask`, its source and ideas, and the output format in ABTEST.md.",
+  "about": "Made-up jobs for the with-and-without comparison (ABTEST.md). Each job has a `round`: \"pilot\" (the first run, not counted), 1 or 2. The sixteen counted runs take the round 1 jobs and then the round 2 jobs, in the order they are listed here, two a week. Every kind of content the owner's four apps make is tested twice, each time from a different source, so no counted run reuses a source an earlier run's lessons were written about. Sources are written for this file: no real class, teacher or order. Every arm gets exactly `request`, the job's `ask`, its source and ideas, and the output format (node scripts/ab-score.mjs --prompt <id>).",
   "request": "Write the set described under ASK, for the grade given, from the source below. Use nothing that isn't in the source. Tag every item with the id of the one idea it mainly tests. About 40% of the items should be level 3 (harder in the skill itself, not just longer); the rest level 1 or 2. Return only the JSON described in the output format.",
   "jobs": [
     {
@@ -10,18 +10,45 @@
       "grade": 5,
       "title": "Where the Puddle Went",
       "ask": "Exactly 10 multiple-choice questions, 4 choices each, exactly one right answer.",
-      "mix": { "mc": 10 },
+      "mix": {
+        "mc": 10
+      },
       "source": "After a rainstorm, a puddle sits in the schoolyard. By the next afternoon it is gone. The water did not vanish. Energy from the sun warmed the puddle, and the liquid water slowly changed into an invisible gas called water vapor. This change from liquid to gas is called evaporation. Evaporation happens faster when it is warm and windy, and slower when it is cool and still.\n\nWater vapor rises with warm air. High above the ground the air is colder. When water vapor cools, it changes back into tiny drops of liquid water. This change from gas to liquid is called condensation. The drops gather around bits of dust in the air, and billions of them together form a cloud. You can see condensation on the ground too: the outside of a cold glass gets wet on a humid day because water vapor in the air touches the cold glass and turns to liquid.\n\nInside a cloud, the tiny drops bump into each other and join. When the drops grow too heavy for the air to hold up, they fall. Water that falls from clouds is called precipitation. Rain, snow, sleet and hail are all precipitation.\n\nSome of the water that reaches the ground soaks into the soil, where plant roots can take it in. Some of it runs downhill over the surface into streams, rivers and lakes. This flowing water is called runoff. Sooner or later the sun warms that water as well, and it evaporates again. Because the same water keeps moving through these steps, scientists call it the water cycle. No new water is made, and none is used up.",
       "ideas": [
-        { "id": "i1", "idea": "Evaporation: the sun's energy changes liquid water into water vapor, an invisible gas" },
-        { "id": "i2", "idea": "Evaporation is faster when it is warm and windy, slower when cool and still" },
-        { "id": "i3", "idea": "Condensation: water vapor cools and changes back into tiny liquid drops" },
-        { "id": "i4", "idea": "Clouds are billions of tiny drops gathered around bits of dust" },
-        { "id": "i5", "idea": "The cold glass: vapor in the air turns to liquid on a cold surface" },
-        { "id": "i6", "idea": "Precipitation: drops join, grow too heavy and fall as rain, snow, sleet or hail" },
-        { "id": "i7", "idea": "On the ground, water soaks into soil or runs off into streams, rivers and lakes" },
-        { "id": "i8", "idea": "It is a cycle: the same water keeps moving; none is made or used up" }
-      ]
+        {
+          "id": "i1",
+          "idea": "Evaporation: the sun's energy changes liquid water into water vapor, an invisible gas"
+        },
+        {
+          "id": "i2",
+          "idea": "Evaporation is faster when it is warm and windy, slower when cool and still"
+        },
+        {
+          "id": "i3",
+          "idea": "Condensation: water vapor cools and changes back into tiny liquid drops"
+        },
+        {
+          "id": "i4",
+          "idea": "Clouds are billions of tiny drops gathered around bits of dust"
+        },
+        {
+          "id": "i5",
+          "idea": "The cold glass: vapor in the air turns to liquid on a cold surface"
+        },
+        {
+          "id": "i6",
+          "idea": "Precipitation: drops join, grow too heavy and fall as rain, snow, sleet or hail"
+        },
+        {
+          "id": "i7",
+          "idea": "On the ground, water soaks into soil or runs off into streams, rivers and lakes"
+        },
+        {
+          "id": "i8",
+          "idea": "It is a cycle: the same water keeps moving; none is made or used up"
+        }
+      ],
+      "round": "pilot"
     },
     {
       "id": "hist-marrow-creek",
@@ -31,18 +58,47 @@
       "grade": 6,
       "title": "How Marrow Creek Changed (a made-up town)",
       "ask": "Exactly 10 items: 6 multiple-choice questions (4 choices each), 2 true-or-false statements (one true, one false), and 2 short answers. Each short answer has a model answer and a rubric of 2 to 4 points made of yes-or-no rows worth 1 or 2 points each.",
-      "mix": { "mc": 6, "tf": 2, "short": 2 },
+      "mix": {
+        "mc": 6,
+        "tf": 2,
+        "short": 2
+      },
       "source": "Marrow Creek is a made-up town. Everything a quiz says about it must come from this page.\n\nMarrow Creek began in 1848 as a ferry landing. Travelers heading west had to cross the Tolland River, and a family named Okafor ran the only ferry for twenty miles. A general store and a blacksmith opened beside the landing because travelers waiting for the ferry needed supplies and repairs.\n\nIn 1871 a railroad company built a bridge over the river three miles upstream, at a place called Harlan's Bend. Within five years most travelers crossed by train, and the ferry made only two trips a day. The store and the blacksmith both moved to Harlan's Bend. The town's own records show its population falling from 640 in 1870 to 210 in 1880.\n\nThe people who stayed turned to farming. The soil near the creek was good for apples, and in 1893 the growers formed a cooperative so they could share one packing house and bargain together for lower shipping prices. By 1910 Marrow Creek shipped more apples than any other town in the county, and the population had climbed back to 580.\n\nPeople in Marrow Creek tell this history in two ways. The town's Founders Day speech, given every June, says the town was saved by the hard work of its farmers. A diary kept by the ferryman's daughter, Adaeze Okafor, tells it differently. She wrote in 1879 that many families did not choose to stay: they were too poor to move, and the first orchards were planted on land that had become cheap because so many neighbors had left.\n\nHistorians who study the town use both the speech and the diary. They also use the population records and the cooperative's shipping ledgers, because those were written at the time for practical reasons and not to make anyone look good.",
       "ideas": [
-        { "id": "i1", "idea": "The town began in 1848 as a ferry landing; businesses opened because waiting travelers needed things" },
-        { "id": "i2", "idea": "The 1871 railroad bridge upstream took the travelers away and the businesses followed" },
-        { "id": "i3", "idea": "Evidence of decline: population fell from 640 (1870) to 210 (1880)" },
-        { "id": "i4", "idea": "Those who stayed turned to apple farming because the soil suited it" },
-        { "id": "i5", "idea": "The 1893 cooperative: share a packing house, bargain together for lower shipping prices" },
-        { "id": "i6", "idea": "Recovery by 1910: most apples shipped in the county, population back to 580" },
-        { "id": "i7", "idea": "Two tellings: the Founders Day speech (hard work) and the diary (too poor to move, cheap land)" },
-        { "id": "i8", "idea": "Why historians also use records and ledgers: written at the time for practical reasons" }
-      ]
+        {
+          "id": "i1",
+          "idea": "The town began in 1848 as a ferry landing; businesses opened because waiting travelers needed things"
+        },
+        {
+          "id": "i2",
+          "idea": "The 1871 railroad bridge upstream took the travelers away and the businesses followed"
+        },
+        {
+          "id": "i3",
+          "idea": "Evidence of decline: population fell from 640 (1870) to 210 (1880)"
+        },
+        {
+          "id": "i4",
+          "idea": "Those who stayed turned to apple farming because the soil suited it"
+        },
+        {
+          "id": "i5",
+          "idea": "The 1893 cooperative: share a packing house, bargain together for lower shipping prices"
+        },
+        {
+          "id": "i6",
+          "idea": "Recovery by 1910: most apples shipped in the county, population back to 580"
+        },
+        {
+          "id": "i7",
+          "idea": "Two tellings: the Founders Day speech (hard work) and the diary (too poor to move, cheap land)"
+        },
+        {
+          "id": "i8",
+          "idea": "Why historians also use records and ledgers: written at the time for practical reasons"
+        }
+      ],
+      "round": 1
     },
     {
       "id": "math-ratios",
@@ -52,16 +108,38 @@
       "grade": 6,
       "title": "Ratios and unit rates",
       "ask": "Exactly 10 items: 5 with a typed number answer (give `answer`, and in `accept` every other form a student could fairly type, such as 2.5 and 5/2) and 5 multiple-choice questions (4 choices each). Use made-up, realistic situations. Work every right answer out exactly and show the working in `why`.",
-      "mix": { "numeric": 5, "mc": 5 },
+      "mix": {
+        "numeric": 5,
+        "mc": 5
+      },
       "source": "There is no passage. Write the set on these skills.\n\nSkill notes for the grade: a ratio compares two quantities in a stated order (3 red to 5 blue is 3:5, not 5:3). Equivalent ratios multiply or divide both parts by the same number. A unit rate is the amount for one unit (240 miles in 4 hours is 60 miles per hour). To compare two deals, find each unit price. A ratio can compare a part to a part or a part to the whole, and the question must make clear which.",
       "ideas": [
-        { "id": "i1", "idea": "Write a ratio in the order the words give" },
-        { "id": "i2", "idea": "Part to part against part to whole" },
-        { "id": "i3", "idea": "Find an equivalent ratio or a missing value in a table of equivalent ratios" },
-        { "id": "i4", "idea": "Find a unit rate" },
-        { "id": "i5", "idea": "Use a unit rate to find another amount" },
-        { "id": "i6", "idea": "Compare two deals or two rates and say which is better, with the reason" }
-      ]
+        {
+          "id": "i1",
+          "idea": "Write a ratio in the order the words give"
+        },
+        {
+          "id": "i2",
+          "idea": "Part to part against part to whole"
+        },
+        {
+          "id": "i3",
+          "idea": "Find an equivalent ratio or a missing value in a table of equivalent ratios"
+        },
+        {
+          "id": "i4",
+          "idea": "Find a unit rate"
+        },
+        {
+          "id": "i5",
+          "idea": "Use a unit rate to find another amount"
+        },
+        {
+          "id": "i6",
+          "idea": "Compare two deals or two rates and say which is better, with the reason"
+        }
+      ],
+      "round": 1
     },
     {
       "id": "ela-lantern",
@@ -71,19 +149,47 @@
       "grade": 5,
       "title": "The Lantern on Pike Hill",
       "ask": "Exactly 10 items: 8 multiple-choice questions (4 choices each) and 2 short answers. Two of the multiple-choice questions, one right after the other, form a pair: the first begins \"Part A:\" and the second begins \"Part B:\" and asks which detail from the story best supports the answer to Part A. Each short answer asks the student to quote words from the story as evidence, and has a model answer and a rubric of 2 to 4 points made of yes-or-no rows worth 1 or 2 points each. Every question must need the story: a student who has not read it should not be able to answer.",
-      "mix": { "mc": 8, "short": 2 },
+      "mix": {
+        "mc": 8,
+        "short": 2
+      },
       "pair": true,
       "source": "[1] Every evening at dusk, Old Tomas climbed Pike Hill and lit the lantern on its iron post. Nobody in the village could remember why. The fishing boats had used a new harbor on the far side of the bay for thirty years, and no boat had passed Pike Hill in all that time.\n\n[2] Inez thought it was silly, and she said so. \"You're lighting the way for nobody,\" she told him, the summer she turned eleven.\n\n[3] Tomas only smiled and handed her the oil can. \"Carry this up for me, then. My knees aren't what they were.\"\n\n[4] So Inez carried the oil, grumbling the whole way. She carried it the next evening as well, and the one after. She told herself she was only being polite. But she noticed that she had started watching the sky in the afternoons, judging when the light would begin to fail.\n\n[5] In October a storm came down the coast faster than anyone expected. Tomas was in bed with a fever. The wind tore a shutter off the bakery. Inez stood at her window and looked at the dark shape of Pike Hill, and for a long moment she did not move.\n\n[6] Then she took the oil can from its hook.\n\n[7] The climb took twice as long as usual. Twice the wind blew out her match. The third one caught, and the lantern glowed against the rain.\n\n[8] She was halfway down when she saw it: a small boat, far off course, turning slowly toward the light. It was the doctor's skiff, coming back from the island, and it had lost the harbor in the dark.\n\n[9] The next evening Inez was on the hill before dusk. She did not grumble, and nobody asked her why she had come.",
       "ideas": [
-        { "id": "i1", "idea": "Setting and situation: the lantern is lit each dusk though no boat has passed in thirty years" },
-        { "id": "i2", "idea": "Inez's first attitude: she thinks it is silly and says so" },
-        { "id": "i3", "idea": "How Tomas answers: he doesn't argue, he gives her a job" },
-        { "id": "i4", "idea": "The quiet change in paragraph 4: she starts watching the sky (she cares before she admits it)" },
-        { "id": "i5", "idea": "The turning point: the storm, Tomas ill, her long moment, then she takes the oil can" },
-        { "id": "i6", "idea": "The climb: what makes it hard, and that she keeps trying" },
-        { "id": "i7", "idea": "The doctor's skiff: the light matters after all" },
-        { "id": "i8", "idea": "The ending and theme: she comes without being asked; a duty can matter even when you can't see who it is for" }
-      ]
+        {
+          "id": "i1",
+          "idea": "Setting and situation: the lantern is lit each dusk though no boat has passed in thirty years"
+        },
+        {
+          "id": "i2",
+          "idea": "Inez's first attitude: she thinks it is silly and says so"
+        },
+        {
+          "id": "i3",
+          "idea": "How Tomas answers: he doesn't argue, he gives her a job"
+        },
+        {
+          "id": "i4",
+          "idea": "The quiet change in paragraph 4: she starts watching the sky (she cares before she admits it)"
+        },
+        {
+          "id": "i5",
+          "idea": "The turning point: the storm, Tomas ill, her long moment, then she takes the oil can"
+        },
+        {
+          "id": "i6",
+          "idea": "The climb: what makes it hard, and that she keeps trying"
+        },
+        {
+          "id": "i7",
+          "idea": "The doctor's skiff: the light matters after all"
+        },
+        {
+          "id": "i8",
+          "idea": "The ending and theme: she comes without being asked; a duty can matter even when you can't see who it is for"
+        }
+      ],
+      "round": 1
     },
     {
       "id": "stats-bus-routes",
@@ -93,19 +199,47 @@
       "grade": 12,
       "title": "Two bus routes",
       "ask": "Exactly 9 items. 5 stand-alone multiple-choice questions (4 choices each); each must make sense with the source alone. Then one set of 3 multiple-choice questions that share one extra prompt you write (put it in `sets` and give the three items its id in `set`); the three must test different things and none may help answer another. Then 1 free-response question in parts, with a full model answer in context, a rubric whose yes-or-no rows are worth 1 or 2 points and add to exactly 10, a hint that points at the first step and gives nothing away, and 2 to 4 common mistakes. Use only the numbers in the source: do not compute a new test or interval.",
-      "mix": { "mc": 8, "frq": 1 },
+      "mix": {
+        "mc": 8,
+        "frq": 1
+      },
       "set": 3,
       "source": "A city transit office wants to know whether its two bus routes from Elm Park to downtown differ in mean morning travel time. From last month's records it takes a random sample of 40 morning trips on Route A and, separately, a random sample of 36 morning trips on Route B. Each route ran more than 1,200 morning trips last month.\n\nRoute A: n = 40, sample mean 31.2 minutes, sample standard deviation 6.1 minutes.\nRoute B: n = 36, sample mean 28.4 minutes, sample standard deviation 5.3 minutes.\n\nDotplots of the two samples show no strong skew and no outliers.\n\nThe office tests H0: muA − muB = 0 against Ha: muA − muB ≠ 0, where muA and muB are the true mean morning travel times, in minutes, of all last month's morning trips on each route. A two-sample t test gives t = 2.14 with about 73.9 degrees of freedom and a P-value of 0.036. A 95% confidence interval for muA − muB is (0.2, 5.4) minutes. The office uses a significance level of 0.05.\n\nThe trips were not assigned to routes: each route simply ran its own schedule.",
       "ideas": [
-        { "id": "i1", "idea": "Name the parameter in context: the difference in true mean morning travel times of all last month's trips on each route" },
-        { "id": "i2", "idea": "Choose the procedure: two independent random samples, means, so a two-sample t test (not paired, not proportions)" },
-        { "id": "i3", "idea": "Conditions: random samples; independent (each sample under 10% of the trips); large samples or no strong skew or outliers in each" },
-        { "id": "i4", "idea": "What the test statistic t = 2.14 measures: the observed difference in standard errors from 0" },
-        { "id": "i5", "idea": "Interpret the P-value 0.036: if the true means were equal, the chance of a difference this large or larger in either direction" },
-        { "id": "i6", "idea": "Conclusion in context at the 0.05 level: reject H0; convincing evidence the true mean travel times differ" },
-        { "id": "i7", "idea": "The interval (0.2, 5.4) agrees with the test: 0 is not in it; it gives plausible sizes of the difference" },
-        { "id": "i8", "idea": "Limits: no random assignment, so no cause; the result is about last month's morning trips on these routes" }
-      ]
+        {
+          "id": "i1",
+          "idea": "Name the parameter in context: the difference in true mean morning travel times of all last month's trips on each route"
+        },
+        {
+          "id": "i2",
+          "idea": "Choose the procedure: two independent random samples, means, so a two-sample t test (not paired, not proportions)"
+        },
+        {
+          "id": "i3",
+          "idea": "Conditions: random samples; independent (each sample under 10% of the trips); large samples or no strong skew or outliers in each"
+        },
+        {
+          "id": "i4",
+          "idea": "What the test statistic t = 2.14 measures: the observed difference in standard errors from 0"
+        },
+        {
+          "id": "i5",
+          "idea": "Interpret the P-value 0.036: if the true means were equal, the chance of a difference this large or larger in either direction"
+        },
+        {
+          "id": "i6",
+          "idea": "Conclusion in context at the 0.05 level: reject H0; convincing evidence the true mean travel times differ"
+        },
+        {
+          "id": "i7",
+          "idea": "The interval (0.2, 5.4) agrees with the test: 0 is not in it; it gives plausible sizes of the difference"
+        },
+        {
+          "id": "i8",
+          "idea": "Limits: no random assignment, so no cause; the result is about last month's morning trips on these routes"
+        }
+      ],
+      "round": 1
     },
     {
       "id": "lesson-area",
@@ -115,16 +249,39 @@
       "grade": 6,
       "title": "Area of parallelograms and triangles",
       "ask": "Exactly 10 items for one lesson's practice: 6 with a typed number answer, in this order: 2 easy (level 1), 2 medium (level 2), 2 hard (level 3); give `answer` and, in `accept`, every other form a student could fairly type, and say the unit in the prompt. Then 2 multiple-choice questions (4 choices each) of the kind \"two students worked this; who is right, and why?\". Then 2 fill-in vocabulary items: a sentence with one blank, and in `accept` every word or phrase that should count. Use made-up, realistic situations and whole numbers or simple decimals. Work every right answer out and show the working in `why`.",
-      "mix": { "numeric": 6, "mc": 2, "fill": 2 },
+      "mix": {
+        "numeric": 6,
+        "mc": 2,
+        "fill": 2
+      },
       "source": "There is no passage. Write the practice on these notes.\n\nLesson notes: the area of a parallelogram is base × height. The height is the perpendicular distance between the base and the opposite side; it is not the length of the slanted side. A parallelogram can be cut and rearranged into a rectangle with the same base and height, which is why the rule works. The area of a triangle is one half × base × height, because two copies of a triangle make a parallelogram with the same base and height. Any side can be the base, as long as the height is measured perpendicular to that side. Area is measured in square units. To find a missing base or height when the area is known, divide: for a parallelogram, height = area ÷ base; for a triangle, height = (2 × area) ÷ base.\n\nVocabulary for the lesson: base, height, perpendicular, parallelogram, square units.",
       "ideas": [
-        { "id": "i1", "idea": "Area of a parallelogram is base × height" },
-        { "id": "i2", "idea": "The height is perpendicular to the base, not the slanted side" },
-        { "id": "i3", "idea": "Area of a triangle is one half × base × height, and why (two triangles make a parallelogram)" },
-        { "id": "i4", "idea": "Any side can be the base if the height goes with it" },
-        { "id": "i5", "idea": "Find a missing base or height from the area" },
-        { "id": "i6", "idea": "Vocabulary and units: base, height, perpendicular, square units" }
-      ]
+        {
+          "id": "i1",
+          "idea": "Area of a parallelogram is base × height"
+        },
+        {
+          "id": "i2",
+          "idea": "The height is perpendicular to the base, not the slanted side"
+        },
+        {
+          "id": "i3",
+          "idea": "Area of a triangle is one half × base × height, and why (two triangles make a parallelogram)"
+        },
+        {
+          "id": "i4",
+          "idea": "Any side can be the base if the height goes with it"
+        },
+        {
+          "id": "i5",
+          "idea": "Find a missing base or height from the area"
+        },
+        {
+          "id": "i6",
+          "idea": "Vocabulary and units: base, height, perpendicular, square units"
+        }
+      ],
+      "round": 1
     },
     {
       "id": "gram-commas",
@@ -134,17 +291,41 @@
       "grade": 6,
       "title": "Commas: series, introductions and joining sentences",
       "ask": "Exactly 10 multiple-choice questions, 4 choices each, exactly one right answer. Mix the kinds: which sentence is punctuated correctly; where the comma goes; which rule a sentence shows; what is wrong with a sentence. Write your own example sentences.",
-      "mix": { "mc": 10 },
+      "mix": {
+        "mc": 10
+      },
       "source": "There is no passage. Write the questions on these rules, with your own example sentences.\n\nRule 1, items in a series: use commas to separate three or more items in a list (We packed apples, cheese, and bread). Two items joined by and need no comma.\n\nRule 2, introductory words and phrases: put a comma after an introductory word, phrase or clause that comes before the main part of the sentence (After the game, we walked home. Yes, I finished it.).\n\nRule 3, joining two complete sentences: when two complete sentences are joined by and, but, or, so, yet, for or nor, put a comma before that joining word (The bell rang, and the class lined up). If what follows the joining word is not a complete sentence, use no comma (The bell rang and startled the class).\n\nRule 4, the comma splice: a comma alone cannot join two complete sentences (wrong: The bell rang, the class lined up). Fix it with a joining word after the comma, with a period, or with a semicolon.\n\nA complete sentence has a subject and a verb and can stand alone.",
       "ideas": [
-        { "id": "i1", "idea": "Commas separate three or more items in a series" },
-        { "id": "i2", "idea": "Two items joined by and take no comma" },
-        { "id": "i3", "idea": "A comma follows an introductory word, phrase or clause" },
-        { "id": "i4", "idea": "A comma goes before the joining word between two complete sentences" },
-        { "id": "i5", "idea": "No comma before the joining word when what follows is not a complete sentence" },
-        { "id": "i6", "idea": "A comma alone cannot join two complete sentences (the comma splice), and how to fix it" },
-        { "id": "i7", "idea": "What makes a complete sentence: a subject and a verb, able to stand alone" }
-      ]
+        {
+          "id": "i1",
+          "idea": "Commas separate three or more items in a series"
+        },
+        {
+          "id": "i2",
+          "idea": "Two items joined by and take no comma"
+        },
+        {
+          "id": "i3",
+          "idea": "A comma follows an introductory word, phrase or clause"
+        },
+        {
+          "id": "i4",
+          "idea": "A comma goes before the joining word between two complete sentences"
+        },
+        {
+          "id": "i5",
+          "idea": "No comma before the joining word when what follows is not a complete sentence"
+        },
+        {
+          "id": "i6",
+          "idea": "A comma alone cannot join two complete sentences (the comma splice), and how to fix it"
+        },
+        {
+          "id": "i7",
+          "idea": "What makes a complete sentence: a subject and a verb, able to stand alone"
+        }
+      ],
+      "round": 1
     },
     {
       "id": "ab-fractions",
@@ -154,17 +335,454 @@
       "grade": 5,
       "title": "Adding and subtracting fractions with unlike denominators",
       "ask": "Exactly 12 multiple-choice questions (4 choices each): a 6-question quiz in two versions. Give each item `version` \"A\" or \"B\" and use the same ids in both (q1 to q6). Question for question, B tests the same idea at the same level as A with different numbers and a different story; B reuses none of A's choice texts; and the right answer never sits under the same letter in A and B. B must be no easier than A. Give every answer in simplest form. Work every right answer out and show the working in `why`.",
-      "mix": { "mc": 12 },
-      "versions": ["A", "B"],
+      "mix": {
+        "mc": 12
+      },
+      "versions": [
+        "A",
+        "B"
+      ],
       "source": "There is no passage. Write the quiz on these notes.\n\nSkill notes for the grade: to add or subtract fractions with unlike denominators, rewrite them as equivalent fractions with a common denominator, then add or subtract the numerators and keep the denominator. The least common denominator keeps the numbers small, but any common denominator works. Write the answer in simplest form. Mixed numbers can be added by adding the whole numbers and the fractions separately, regrouping when the fraction part reaches 1 or more; to subtract when the first fraction part is smaller, regroup 1 whole into the fraction. Common mistakes: adding the numerators and adding the denominators (1/2 + 1/3 is not 2/5); changing a denominator without changing its numerator; forgetting to simplify; forgetting to regroup. An estimate with benchmarks (0, 1/2, 1) shows whether an answer is reasonable.",
       "ideas": [
-        { "id": "i1", "idea": "Add two fractions with unlike denominators" },
-        { "id": "i2", "idea": "Subtract two fractions with unlike denominators" },
-        { "id": "i3", "idea": "Add mixed numbers, regrouping when the fraction part reaches 1" },
-        { "id": "i4", "idea": "Subtract mixed numbers when the first fraction part is smaller" },
-        { "id": "i5", "idea": "Spot the mistake: numerators and denominators both added, or a denominator changed without its numerator" },
-        { "id": "i6", "idea": "Use an estimate with benchmarks to judge whether an answer is reasonable" }
-      ]
+        {
+          "id": "i1",
+          "idea": "Add two fractions with unlike denominators"
+        },
+        {
+          "id": "i2",
+          "idea": "Subtract two fractions with unlike denominators"
+        },
+        {
+          "id": "i3",
+          "idea": "Add mixed numbers, regrouping when the fraction part reaches 1"
+        },
+        {
+          "id": "i4",
+          "idea": "Subtract mixed numbers when the first fraction part is smaller"
+        },
+        {
+          "id": "i5",
+          "idea": "Spot the mistake: numerators and denominators both added, or a denominator changed without its numerator"
+        },
+        {
+          "id": "i6",
+          "idea": "Use an estimate with benchmarks to judge whether an answer is reasonable"
+        }
+      ],
+      "round": 1
+    },
+    {
+      "id": "sci-seedlings",
+      "kind": "A multiple-choice quiz from a science passage",
+      "apps": "Planning Period (quiz from a teacher's source); Pet World (Biology and History library units)",
+      "subject": "science",
+      "grade": 5,
+      "title": "Why the Seedlings Leaned",
+      "ask": "Exactly 10 multiple-choice questions, 4 choices each, exactly one right answer.",
+      "mix": {
+        "mc": 10
+      },
+      "source": "A fifth grade class wanted to know whether light changes the way a young plant grows. They planted bean seeds in three pots with the same soil and gave each pot the same amount of water every day. Then they put each pot inside a cardboard box.\n\nBox 1 had a hole cut in its left side. Box 2 had a hole cut in its top. Box 3 had no hole at all, so no light got in. The boxes sat side by side on the same shelf, so they were all at the same temperature.\n\nAfter ten days the class opened the boxes. The seedlings in Box 1 leaned to the left, toward the hole. The seedlings in Box 2 stood straight up. The seedlings in Box 3 were the tallest of all, but their stems were thin and weak and their leaves were pale yellow instead of green.\n\nThe class's teacher explained what they had seen. A plant's stem grows toward light. When light comes from one side, the shaded side of the stem grows faster than the lit side, and that bends the stem toward the light. A plant kept in the dark grows tall quickly, as if it were reaching for light it cannot find, but it cannot make the green material in its leaves without light. That green material is what a plant uses to make its own food from sunlight, so a plant left in the dark will use up the food stored in its seed and then die.\n\nThe class agreed that their test was fair because only one thing was different between the boxes: where the light came from. The soil, the water, the kind of seed and the temperature were all kept the same. One student pointed out a weakness: each box had only three seedlings, so the class decided to repeat the test with more.",
+      "ideas": [
+        {
+          "id": "i1",
+          "idea": "The question: does light change the way a young plant grows"
+        },
+        {
+          "id": "i2",
+          "idea": "The setup: three boxes that differ only in where the light comes in (left, top, none)"
+        },
+        {
+          "id": "i3",
+          "idea": "Result in Box 1 and Box 2: seedlings lean toward the hole; with light from above they stand straight"
+        },
+        {
+          "id": "i4",
+          "idea": "Result in Box 3: tallest, but thin, weak stems and pale yellow leaves"
+        },
+        {
+          "id": "i5",
+          "idea": "Why a stem bends: the shaded side grows faster than the lit side"
+        },
+        {
+          "id": "i6",
+          "idea": "Why the dark seedlings are pale and will die: no green material without light, so no food once the seed's store is used"
+        },
+        {
+          "id": "i7",
+          "idea": "A fair test: only one thing differs; soil, water, seed and temperature are kept the same"
+        },
+        {
+          "id": "i8",
+          "idea": "A weakness and the fix: only three seedlings a box, so repeat with more"
+        }
+      ],
+      "round": 1
+    },
+    {
+      "id": "hist-port-wren",
+      "kind": "A mixed assessment: multiple choice, true or false, and short answers with rubrics",
+      "apps": "Teacher Suite (Content Studio assessments); Planning Period (tests); Pet World (History units with written answers)",
+      "subject": "social studies",
+      "grade": 6,
+      "title": "The Lighthouse at Port Wren (a made-up town)",
+      "ask": "Exactly 10 items: 6 multiple-choice questions (4 choices each), 2 true-or-false statements (one true, one false), and 2 short answers. Each short answer has a model answer and a rubric of 2 to 4 points made of yes-or-no rows worth 1 or 2 points each.",
+      "mix": {
+        "mc": 6,
+        "tf": 2,
+        "short": 2
+      },
+      "source": "Port Wren is a made-up town. Everything a quiz says about it must come from this page.\n\nPort Wren was a fishing town. In 1862 its harbor had no light, and the town's burial register for the ten years before that lists 31 fishermen lost on the rocks called the Sisters, just outside the harbor mouth.\n\nIn 1863 the town council voted to build a lighthouse on the Sisters and to pay for it with a new tax of two cents on every barrel of fish landed at the town dock. The fishermen's guild supported the plan. The dock owners opposed it: they wrote to the council that boats would land their catch at Garrow, eight miles south, where there was no tax.\n\nThe lighthouse was finished in 1866. The burial register lists 4 fishermen lost on the Sisters in the ten years after it was lit. The dock's own ledger shows that barrels landed at Port Wren fell from 18,000 in 1865 to 11,500 in 1868, and two of the five dock companies closed.\n\nIn 1869 the council ended the barrel tax and paid for the light instead with a yearly fee on every boat registered in the town, whether or not it landed fish there. By 1875 the ledger shows 17,200 barrels landed.\n\nThe town remembers this in two ways. A plaque on the lighthouse, put up by the fishermen's guild in 1900, calls the light \"the gift of Port Wren's fishermen to their sons.\" A letter written in 1870 by a dock owner, Tobias Reeve, says the council \"saved lives and ruined trade, and then had the sense to change the tax and not the light.\"\n\nPeople who study the town trust the burial register and the dock ledger most for the numbers, because each was kept at the time by someone whose job was to count, not to argue.",
+      "ideas": [
+        {
+          "id": "i1",
+          "idea": "The problem before 1863: no harbor light, and 31 fishermen lost on the Sisters in ten years"
+        },
+        {
+          "id": "i2",
+          "idea": "The 1863 plan: a lighthouse paid for by a two-cent tax on every barrel landed"
+        },
+        {
+          "id": "i3",
+          "idea": "Who was for and against, and why: the guild for it; the dock owners feared boats would land at Garrow"
+        },
+        {
+          "id": "i4",
+          "idea": "What the light did: losses fell from 31 to 4 in the ten years after"
+        },
+        {
+          "id": "i5",
+          "idea": "What the tax did: barrels fell from 18,000 (1865) to 11,500 (1868); two of five dock companies closed"
+        },
+        {
+          "id": "i6",
+          "idea": "The 1869 fix: a yearly fee on every registered boat instead of the barrel tax; 17,200 barrels by 1875"
+        },
+        {
+          "id": "i7",
+          "idea": "Two tellings: the guild's plaque (a gift of the fishermen) and Reeve's letter (saved lives, ruined trade, then changed the tax)"
+        },
+        {
+          "id": "i8",
+          "idea": "Why the register and the ledger are trusted for numbers: kept at the time by people whose job was to count"
+        }
+      ],
+      "round": 2
+    },
+    {
+      "id": "math-percents",
+      "kind": "Math practice with typed number answers and multiple choice, every key worked out",
+      "apps": "Pet World (math shops); Planning Period (math worksheets and quizzes)",
+      "subject": "math",
+      "grade": 6,
+      "title": "Percent of a quantity",
+      "ask": "Exactly 10 items: 5 with a typed number answer (give `answer`, and in `accept` every other form a student could fairly type, such as 2.5 and 5/2) and 5 multiple-choice questions (4 choices each). Use made-up, realistic situations. Work every right answer out exactly and show the working in `why`.",
+      "mix": {
+        "numeric": 5,
+        "mc": 5
+      },
+      "source": "There is no passage. Write the set on these skills.\n\nSkill notes for the grade: percent means out of 100, so 35% is 35/100 or 0.35. To find a percent of a quantity, multiply the quantity by the percent written as a decimal or a fraction (20% of 60 is 0.20 × 60 = 12). Benchmarks make this quick: 50% is half, 25% is a quarter, 10% is one tenth, and 1% is one hundredth; other percents can be built from these (15% is 10% plus half of 10%). To find the whole when a part and its percent are known, divide the part by the percent as a decimal (12 is 20% of 60, because 12 ÷ 0.20 = 60). To find what percent one number is of another, divide the part by the whole and write the result as a percent (12 out of 60 is 12 ÷ 60 = 0.20 = 20%). A percent of a quantity and the rest of it add to the whole: if 30% of the seats are taken, 70% are empty. The question must make clear whether it asks for the part, the whole, the percent, or what is left.",
+      "ideas": [
+        {
+          "id": "i1",
+          "idea": "Write a percent as a fraction or a decimal, and back"
+        },
+        {
+          "id": "i2",
+          "idea": "Find a percent of a quantity"
+        },
+        {
+          "id": "i3",
+          "idea": "Use benchmarks (50%, 25%, 10%, 1%) to build another percent"
+        },
+        {
+          "id": "i4",
+          "idea": "Find the whole from a part and its percent"
+        },
+        {
+          "id": "i5",
+          "idea": "Find what percent one number is of another"
+        },
+        {
+          "id": "i6",
+          "idea": "Find what is left: the percent and the amount not included"
+        }
+      ],
+      "round": 2
+    },
+    {
+      "id": "ela-ferry-bell",
+      "kind": "A reading quiz on a story: multiple choice with one Part A / Part B pair, and short answers that quote the text",
+      "apps": "Planning Period (reading quizzes); Pet World (English reading units, two-part questions)",
+      "subject": "reading",
+      "grade": 5,
+      "title": "The Bell at Hollow Ferry",
+      "ask": "Exactly 10 items: 8 multiple-choice questions (4 choices each) and 2 short answers. Two of the multiple-choice questions, one right after the other, form a pair: the first begins \"Part A:\" and the second begins \"Part B:\" and asks which detail from the story best supports the answer to Part A. Each short answer asks the student to quote words from the story as evidence, and has a model answer and a rubric of 2 to 4 points made of yes-or-no rows worth 1 or 2 points each. Every question must need the story: a student who has not read it should not be able to answer.",
+      "mix": {
+        "mc": 8,
+        "short": 2
+      },
+      "pair": true,
+      "source": "[1] The ferry at Hollow Crossing had a brass bell on a post, and Marguerite's grandfather polished it every Saturday. The ferry had not run since the bridge opened, four winters ago. Still the cloth came out, and the tin of polish, and the old man worked until he could see his face in the brass.\n\n[2] \"Who is it for?\" Marguerite asked. She was twelve, and she liked things to have reasons.\n\n[3] Her grandfather did not answer the question. He tore the cloth in two and held one half out to her. \"The back of it is hard for me to reach,\" he said.\n\n[4] She took the cloth. She told her friends it was a waste of a Saturday. But the next week she was at the post before he was, and she found she had opinions about the polish: too much left a film, and the corners wanted a dry rag.\n\n[5] In March the river rose in a single night. By morning the bridge road was under brown water on both banks, and her grandfather was away at her aunt's, two valleys over. Across the river a lamp was moving on the far landing. Marguerite watched it swing. She counted to fifty. Nobody else came down to the bank.\n\n[6] She untied the ferry.\n\n[7] The rope was stiff, and the current pushed the flat boat sideways. Twice she lost the pole in the mud and had to work it free. She rang the bell at the halfway mark so the lamp would know where she was.\n\n[8] It was the Abbott twins and their mother, with a goat and a sack of seed, cut off from the mill road since midnight. The bell had told them which way to walk.\n\n[9] On Saturday her grandfather came home and found the brass already bright. He looked at it for a while, and then he went in to make the tea.",
+      "ideas": [
+        {
+          "id": "i1",
+          "idea": "Setting and situation: the bell is polished every Saturday though the ferry has not run for four winters"
+        },
+        {
+          "id": "i2",
+          "idea": "Marguerite at the start: she wants a reason and asks who it is for"
+        },
+        {
+          "id": "i3",
+          "idea": "How her grandfather answers: not with words; he gives her half the cloth"
+        },
+        {
+          "id": "i4",
+          "idea": "The quiet change in paragraph 4: she arrives first and has opinions about the polish (she cares before she admits it)"
+        },
+        {
+          "id": "i5",
+          "idea": "The turning point: the flood, her grandfather away, the lamp, her counting, then she unties the ferry"
+        },
+        {
+          "id": "i6",
+          "idea": "The crossing: what makes it hard, and why she rings the bell"
+        },
+        {
+          "id": "i7",
+          "idea": "Who was waiting, and what the bell did for them"
+        },
+        {
+          "id": "i8",
+          "idea": "The ending and theme: the brass already bright; a task can matter before anyone can say who it is for"
+        }
+      ],
+      "round": 2
+    },
+    {
+      "id": "stats-lunch-menu",
+      "kind": "Exam-style statistics: stand-alone multiple choice, a set of three on one prompt, and a free-response question with a 10-point rubric",
+      "apps": "First Move: AP Statistics (question bank, shared-prompt sets, FRQs)",
+      "subject": "statistics",
+      "grade": 12,
+      "title": "The new lunch menu",
+      "ask": "Exactly 9 items. 5 stand-alone multiple-choice questions (4 choices each); each must make sense with the source alone. Then one set of 3 multiple-choice questions that share one extra prompt you write (put it in `sets` and give the three items its id in `set`); the three must test different things and none may help answer another. Then 1 free-response question in parts, with a full model answer in context, a rubric whose yes-or-no rows are worth 1 or 2 points and add to exactly 10, a hint that points at the first step and gives nothing away, and 2 to 4 common mistakes. Use only the numbers in the source: do not compute a new test or interval.",
+      "mix": {
+        "mc": 8,
+        "frq": 1
+      },
+      "set": 3,
+      "source": "A school district changed its lunch menu in September. The food service director claims that 60% of the district's 4,300 students like the new menu. A student group doubts the figure is that high. In November the group takes a random sample of 200 students from the district's enrollment list and asks each one, \"Do you like the new lunch menu?\" Of the 200 students, 104 say yes.\n\nSample proportion: 104 / 200 = 0.52.\n\nThe group tests H0: p = 0.60 against Ha: p < 0.60, where p is the true proportion of all the district's students who would say they like the new menu. A one-sample z test for a proportion gives z = −2.31 and a P-value of 0.0105. A 95% confidence interval for p is (0.451, 0.589). The group uses a significance level of 0.05.\n\nFor the test, the expected counts are 200 × 0.60 = 120 students who like the menu and 200 × 0.40 = 80 who do not.\n\nThe survey was done in the cafeteria line, face to face, by members of the student group.",
+      "ideas": [
+        {
+          "id": "i1",
+          "idea": "Name the parameter in context: the true proportion of all the district's students who would say they like the new menu"
+        },
+        {
+          "id": "i2",
+          "idea": "Choose the procedure: one random sample, one proportion, so a one-sample z test for a proportion"
+        },
+        {
+          "id": "i3",
+          "idea": "Conditions: random sample; 200 is less than 10% of 4,300; expected counts 120 and 80 are both at least 10"
+        },
+        {
+          "id": "i4",
+          "idea": "What z = −2.31 measures: the sample proportion is 2.31 standard errors below the claimed 0.60"
+        },
+        {
+          "id": "i5",
+          "idea": "Interpret the P-value 0.0105: if the true proportion were 0.60, the chance of a sample proportion of 0.52 or lower"
+        },
+        {
+          "id": "i6",
+          "idea": "Conclusion in context at the 0.05 level: reject H0; convincing evidence the true proportion is less than 0.60"
+        },
+        {
+          "id": "i7",
+          "idea": "The interval (0.451, 0.589): plausible values for the true proportion, and 0.60 is not among them"
+        },
+        {
+          "id": "i8",
+          "idea": "Limits: asked face to face by the group that doubts the claim, so answers may be biased; the result is about this district's students in November"
+        }
+      ],
+      "round": 2
+    },
+    {
+      "id": "lesson-mean-median",
+      "kind": "Lesson practice: number answers that rise from easy to hard, \"which student is right\" questions, and fill-in vocabulary",
+      "apps": "Teacher Suite (Unit Builder lessons: practice in three tiers, vocabulary); Planning Period (guided notes and worksheets)",
+      "subject": "math",
+      "grade": 6,
+      "title": "Mean, median and range",
+      "ask": "Exactly 10 items for one lesson's practice: 6 with a typed number answer, in this order: 2 easy (level 1), 2 medium (level 2), 2 hard (level 3); give `answer` and, in `accept`, every other form a student could fairly type, and say the unit in the prompt. Then 2 multiple-choice questions (4 choices each) of the kind \"two students worked this; who is right, and why?\". Then 2 fill-in vocabulary items: a sentence with one blank, and in `accept` every word or phrase that should count. Use made-up, realistic situations and whole numbers or simple decimals. Work every right answer out and show the working in `why`.",
+      "mix": {
+        "numeric": 6,
+        "mc": 2,
+        "fill": 2
+      },
+      "source": "There is no passage. Write the practice on these notes.\n\nLesson notes: a data set is a list of numbers that were measured or counted. The mean is the total of the values divided by how many values there are; it is the amount each would get if the total were shared out equally. The median is the middle value when the values are written in order; with an even number of values, the median is halfway between the two middle values. The range is the largest value minus the smallest; it tells how spread out the data are and is not a kind of average. One value much larger or smaller than the rest is called an outlier. An outlier pulls the mean toward it but changes the median little or not at all, so the median is often the better description of a typical value when there is an outlier. To find a missing value when the mean is known, multiply the mean by the number of values to get the total, then subtract the values you know.\n\nVocabulary for the lesson: mean, median, range, outlier, data set.",
+      "ideas": [
+        {
+          "id": "i1",
+          "idea": "Find the mean: total divided by how many"
+        },
+        {
+          "id": "i2",
+          "idea": "Find the median, with an odd and with an even number of values"
+        },
+        {
+          "id": "i3",
+          "idea": "Find the range, and know it measures spread, not a typical value"
+        },
+        {
+          "id": "i4",
+          "idea": "An outlier pulls the mean but hardly moves the median"
+        },
+        {
+          "id": "i5",
+          "idea": "Find a missing value from a known mean"
+        },
+        {
+          "id": "i6",
+          "idea": "Vocabulary: mean, median, range, outlier"
+        }
+      ],
+      "round": 2
+    },
+    {
+      "id": "gram-agreement",
+      "kind": "A grammar bank: multiple choice where the same rule names and sentence forms come back as choices",
+      "apps": "Pet World (English grammar units, where category answers are reused on purpose)",
+      "subject": "grammar",
+      "grade": 6,
+      "title": "Subject and verb agreement",
+      "ask": "Exactly 10 multiple-choice questions, 4 choices each, exactly one right answer. Mix the kinds: which sentence is punctuated correctly; where the comma goes; which rule a sentence shows; what is wrong with a sentence. Write your own example sentences.",
+      "mix": {
+        "mc": 10
+      },
+      "source": "There is no passage. Write the questions on these rules, with your own example sentences.\n\nRule 1, the basic rule: a singular subject takes a singular verb and a plural subject takes a plural verb (The dog barks. The dogs bark.).\n\nRule 2, words in between: the verb agrees with its subject, not with a noun in a phrase that comes between them (The box of crayons is on the shelf: the subject is box).\n\nRule 3, subjects joined by and: two subjects joined by and are plural (Maya and her brother walk to school).\n\nRule 4, subjects joined by or or nor: the verb agrees with the subject closer to it (Either the coach or the players are bringing the net. Either the players or the coach is bringing the net.).\n\nRule 5, words such as each, everyone and nobody: these are singular, even when they seem to mean many people (Everyone in the stands is cheering. Each of the players has a locker.).\n\nRule 6, sentences that begin with here or there: the subject comes after the verb, and the verb agrees with it (There are three reasons. Here is the key.).",
+      "ideas": [
+        {
+          "id": "i1",
+          "idea": "A singular subject takes a singular verb; a plural subject takes a plural verb"
+        },
+        {
+          "id": "i2",
+          "idea": "The verb agrees with the subject, not with a noun in a phrase between them"
+        },
+        {
+          "id": "i3",
+          "idea": "Two subjects joined by and are plural"
+        },
+        {
+          "id": "i4",
+          "idea": "With or and nor, the verb agrees with the closer subject"
+        },
+        {
+          "id": "i5",
+          "idea": "Each, everyone and nobody are singular"
+        },
+        {
+          "id": "i6",
+          "idea": "After here or there, the subject follows the verb and the verb agrees with it"
+        }
+      ],
+      "round": 2
+    },
+    {
+      "id": "ab-decimals",
+      "kind": "One quiz in two matched versions, A and B",
+      "apps": "Planning Period (A/B versions of quizzes and tests)",
+      "subject": "math",
+      "grade": 5,
+      "title": "Multiplying decimals",
+      "ask": "Exactly 12 multiple-choice questions (4 choices each): a 6-question quiz in two versions. Give each item `version` \"A\" or \"B\" and use the same ids in both (q1 to q6). Question for question, B tests the same idea at the same level as A with different numbers and a different story; B reuses none of A's choice texts; and the right answer never sits under the same letter in A and B. B must be no easier than A. Give every answer in simplest form. Work every right answer out and show the working in `why`.",
+      "mix": {
+        "mc": 12
+      },
+      "versions": [
+        "A",
+        "B"
+      ],
+      "source": "There is no passage. Write the quiz on these notes.\n\nSkill notes for the grade: to multiply decimals, multiply as if they were whole numbers, then place the decimal point so that the product has as many decimal places as the two factors have together (0.3 × 0.12: 3 × 12 = 36, three decimal places, so 0.036). Write zeros in front when the product has too few digits. Multiplying by a number less than 1 gives a product smaller than the other factor; multiplying by a number greater than 1 gives a larger one. An estimate with rounded numbers shows whether the decimal point is in a sensible place (4.8 × 0.52 is about 5 × 0.5 = 2.5). Multiplying by 10, 100 or 1,000 moves each digit one, two or three places to the left; multiplying by 0.1, 0.01 or 0.001 moves each digit that many places to the right. Common mistakes: lining up the decimal points as in addition and keeping the point there; counting the decimal places of only one factor; dropping a zero that holds a place; expecting every product to be larger than both factors.",
+      "ideas": [
+        {
+          "id": "i1",
+          "idea": "Multiply a decimal by a whole number"
+        },
+        {
+          "id": "i2",
+          "idea": "Multiply two decimals and place the decimal point"
+        },
+        {
+          "id": "i3",
+          "idea": "A product that needs zeros in front"
+        },
+        {
+          "id": "i4",
+          "idea": "Multiply by 10, 100, 0.1 or 0.01"
+        },
+        {
+          "id": "i5",
+          "idea": "Predict whether a product is larger or smaller than a factor, with the reason"
+        },
+        {
+          "id": "i6",
+          "idea": "Use an estimate to judge whether the decimal point is in a sensible place"
+        }
+      ],
+      "round": 2
+    },
+    {
+      "id": "sci-sound",
+      "kind": "A multiple-choice quiz from a science passage",
+      "apps": "Planning Period (quiz from a teacher's source); Pet World (Biology and History library units)",
+      "subject": "science",
+      "grade": 5,
+      "title": "How a Drum Reaches Your Ear",
+      "ask": "Exactly 10 multiple-choice questions, 4 choices each, exactly one right answer.",
+      "mix": {
+        "mc": 10
+      },
+      "source": "Tap a drum and its skin shakes back and forth very quickly. This fast back-and-forth movement is called vibration. Every sound begins with something vibrating: a guitar string, the air inside a flute, or the cords in your throat when you speak.\n\nThe vibrating drum skin pushes on the air next to it. That air pushes on the air a little farther away, and so on. The push travels outward in every direction as a sound wave. The air itself does not travel from the drum to you; each bit of air only moves back and forth a little and passes the push along.\n\nBecause sound is passed along from one bit of matter to the next, it needs matter to travel through. Sound moves through air, through water and through solids such as wood and steel. It travels fastest through solids, slower through liquids and slowest through gases such as air. In empty space, where there is no matter, there is no sound at all.\n\nTwo things about a vibration change what you hear. A bigger vibration makes a louder sound: hit the drum harder and its skin moves farther. A faster vibration makes a higher sound, which is called a higher pitch: a short, tight string vibrates faster than a long, loose one, so its note is higher.\n\nWhen the sound wave reaches your ear, it makes a thin skin inside the ear, called the eardrum, vibrate too. Your ear turns that vibration into a signal, and your brain understands the signal as sound.",
+      "ideas": [
+        {
+          "id": "i1",
+          "idea": "Every sound begins with a vibration, a fast back-and-forth movement"
+        },
+        {
+          "id": "i2",
+          "idea": "A sound wave: the push is passed along through the air in every direction"
+        },
+        {
+          "id": "i3",
+          "idea": "The air itself does not travel from the drum to you; it only moves back and forth"
+        },
+        {
+          "id": "i4",
+          "idea": "Sound needs matter; there is no sound in empty space"
+        },
+        {
+          "id": "i5",
+          "idea": "Speed: fastest through solids, slower through liquids, slowest through gases"
+        },
+        {
+          "id": "i6",
+          "idea": "A bigger vibration makes a louder sound"
+        },
+        {
+          "id": "i7",
+          "idea": "A faster vibration makes a higher pitch (short tight string against long loose one)"
+        },
+        {
+          "id": "i8",
+          "idea": "Hearing: the eardrum vibrates, the ear makes a signal, the brain understands it"
+        }
+      ],
+      "round": 2
     }
   ]
 }
