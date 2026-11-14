@@ -6,7 +6,7 @@ from evidence, in pull requests that pass the checks. It never loosens a rule by
 | When | What | Cap |
 |---|---|---|
 | After every job | The auditor's pass | about $1.50 |
-| Every week | Sync, the with-and-without comparison (`ABTEST.md`), real-use signals, debt, one report | about $12 across all projects |
+| Every week | Sync, the with-and-without comparison (`ABTEST.md`, two jobs), real-use signals, debt, one report | about $20 across all projects |
 | Every month | The streamline check (`STREAMLINE.md`) | about $10 |
 | On a new Claude model, and once a term | The benchmark compare and the baseline again | about $10 |
 
@@ -30,7 +30,7 @@ One run, one project after another, in this order.
    from one project reaches the others. A bad answer the new pattern finds is fixed now. Anything else goes on the
    project's known-failing list, which can only shrink.
 2. **The with-and-without comparison** (`ABTEST.md`). One made-up job, a different kind each week, done by one plain
-   session, a lean team and the full team, and judged blind, with an $8 cap. It is the practice job (it grew out of
+   session, a lean team and the full team, and judged blind, with an $8 cap. Two a week until sixteen are counted. It is the practice job (it grew out of
    Planning Period's Friday test), and what it shows goes to the auditor like any job, including when a cheaper arm
    does as well.
 3. **Real-use signals.** Student miss rates, what grown-ups and teachers asked for, what the tutor was asked: counts
