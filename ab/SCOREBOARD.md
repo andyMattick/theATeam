@@ -8,7 +8,7 @@ difference". A claim about an arm needs at least four runs; a claim about a kind
 than once.
 
 The measures and the rule for a win were fixed on Nov 14, 2026 (`ABTEST.md`). The first row is the pilot, with two
-arms, and is **not counted**. Sixteen counted runs are planned: every job twice, two a week.
+arms, and is **not counted**. Sixteen counted runs are planned: every kind of content twice, each from a different source, two a week.
 
 | Date | Job (kind) | Plain: bad / FIX | Lean: bad / FIX | Team: bad / FIX | Worst bot: plain / lean / team | Sessions: plain / lean / team | Verdict | Report |
 |---|---|---|---|---|---|---|---|---|
