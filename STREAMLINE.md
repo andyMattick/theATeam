@@ -48,6 +48,12 @@ second agent that only re-confirms them is wasted money. It still can't see its 
 or its own drift in difficulty, so an independent reader is still worth paying for. Independence is not the overkill.
 Paying an agent to do a script's job is.
 
+**First comparison, Nov 14, 2026** (`ab/2026-11-14-sci-water-cycle.md`; one run, so not yet a case): a plain session
+matched the team on keys, facts, structure, coverage and level share. The team was ahead only on guessability (key
+longest 20% against 50%; no key printed in another question against 3), and that gap was already in its draft, from
+the maker's cue rules. Its level 3 was no harder than the plain arm's. Watch over the next runs: the blueprint's
+structure rules, and the fact checker on jobs where the maker stays inside the source.
+
 **The baseline now runs every week** as the with-and-without comparison (`ABTEST.md`; scoreboard in
 `ab/SCOREBOARD.md`). Before Nov 14, 2026 the plain-Claude baseline had never been run in any project, and planted defects have only been
 run in Pet World. The first monthly check does both.

@@ -1,0 +1,139 @@
+{
+  "items": [
+    {
+      "id": "q1",
+      "idea": "i1",
+      "level": 1,
+      "prompt": "The sun warms a puddle, and the liquid water slowly changes into an invisible gas. What is this change called?",
+      "choices": ["Condensation", "Evaporation", "Precipitation", "Runoff"],
+      "answer": 1,
+      "why": "The source says the change from liquid to gas is called evaporation."
+    },
+    {
+      "id": "q2",
+      "idea": "i3",
+      "level": 1,
+      "prompt": "What happens to water vapor when it cools high above the ground?",
+      "choices": [
+        "It changes into bits of dust in the air.",
+        "It soaks into the soil below it.",
+        "It changes into tiny drops of liquid water.",
+        "It flows downhill into streams and lakes."
+      ],
+      "answer": 2,
+      "why": "The source says that when water vapor cools, it changes back into tiny drops of liquid water (condensation)."
+    },
+    {
+      "id": "q3",
+      "idea": "i6",
+      "level": 1,
+      "prompt": "Which list names only kinds of precipitation?",
+      "choices": [
+        "Rain, runoff, sleet and streams",
+        "Clouds, dust, hail and snow",
+        "Snow, water vapor, rain and puddles",
+        "Rain, snow, sleet and hail"
+      ],
+      "answer": 3,
+      "why": "The source says rain, snow, sleet and hail are all precipitation. Each other list has things that are not water falling from clouds."
+    },
+    {
+      "id": "q4",
+      "idea": "i7",
+      "level": 2,
+      "prompt": "Rain falls on a hillside. How does some of that water get to where plant roots can take it in?",
+      "choices": [
+        "It soaks into the soil.",
+        "It runs off into a river.",
+        "It rises with warm air.",
+        "It gathers around dust."
+      ],
+      "answer": 0,
+      "why": "The source says some water soaks into the soil, where plant roots can take it in."
+    },
+    {
+      "id": "q5",
+      "idea": "i4",
+      "level": 2,
+      "prompt": "Which sentence best tells what a cloud is?",
+      "choices": [
+        "A large amount of invisible water vapor that has not cooled yet",
+        "Bits of dust that warm air has lifted high above the ground",
+        "Billions of tiny drops of liquid water gathered around bits of dust",
+        "A few big drops of water that are too heavy for the air to hold up"
+      ],
+      "answer": 2,
+      "why": "The source says the tiny liquid drops gather around bits of dust, and billions of them together form a cloud."
+    },
+    {
+      "id": "q6",
+      "idea": "i2",
+      "level": 2,
+      "prompt": "On which kind of day would a puddle take the longest to evaporate?",
+      "choices": [
+        "A warm day with a strong wind",
+        "A warm day with no wind",
+        "A cool day with a strong wind",
+        "A cool day with no wind"
+      ],
+      "answer": 3,
+      "why": "The source says evaporation is slower when it is cool and still, so a cool day with no wind is slowest."
+    },
+    {
+      "id": "q7",
+      "idea": "i2",
+      "level": 3,
+      "prompt": "Two puddles of the same size form after a storm. Puddle A is in a warm, open spot where the wind blows. Puddle B is in a cool corner where the air is still. Which is most likely true, and why?",
+      "choices": [
+        "Puddle A is gone first, because warm, windy air makes evaporation faster.",
+        "Puddle B is gone first, because cool, still air makes evaporation faster.",
+        "Both are gone at the same time, because they hold the same amount of water.",
+        "Puddle A is gone first, because warm, windy air makes condensation faster."
+      ],
+      "answer": 0,
+      "why": "Puddles dry up by evaporation, and the source says evaporation is faster when it is warm and windy. The size is the same, so the spot decides it."
+    },
+    {
+      "id": "q8",
+      "idea": "i5",
+      "level": 3,
+      "prompt": "On a humid day, the outside of a cold glass gets wet. Which other event in the passage is the same kind of change?",
+      "choices": [
+        "A puddle in the schoolyard slowly drying up in the sun",
+        "Water vapor cooling high in the air and forming the drops of a cloud",
+        "Drops in a cloud growing heavy and falling to the ground as rain",
+        "Rain water flowing downhill over the ground into a stream"
+      ],
+      "answer": 1,
+      "why": "On the glass, water vapor touches something cold and turns to liquid. That is condensation, the same gas-to-liquid change that makes cloud drops when vapor cools high up."
+    },
+    {
+      "id": "q9",
+      "idea": "i8",
+      "level": 3,
+      "prompt": "A student says, \"When the puddle dried up, that water was used up, so now there is a little less water than before.\" Which idea from the passage shows the student is wrong?",
+      "choices": [
+        "Clouds make new water to take the place of water that dries up.",
+        "Evaporation happens faster on warm days than on cool days.",
+        "The water became water vapor, and the same water keeps moving through the cycle.",
+        "Some of the water that reaches the ground soaks into the soil."
+      ],
+      "answer": 2,
+      "why": "The source says the water did not vanish: it changed to water vapor, the same water keeps moving through the steps, and none is used up. It also says no new water is made."
+    },
+    {
+      "id": "q10",
+      "idea": "i6",
+      "level": 3,
+      "prompt": "A cloud drifts over the school all morning, but no rain falls from it. From the passage, what is the most likely reason?",
+      "choices": [
+        "Its drops have not joined enough to be too heavy for the air to hold up.",
+        "Its water vapor has not cooled enough to change into any drops yet.",
+        "Its drops have already soaked into the bits of dust inside the cloud.",
+        "Its water has all run off into the streams and lakes below it."
+      ],
+      "answer": 0,
+      "why": "The source says drops fall only when they join and grow too heavy for the air to hold up. A cloud is already made of drops, so the vapor has cooled; the drops are just still small."
+    }
+  ]
+}

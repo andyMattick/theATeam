@@ -190,6 +190,9 @@ for (const [name, opts, prompt, id, ...rest] of cases) {
     if (b.keys.longestPct !== 100 || b.oneItemBots.longest !== 100) bad('scripts/ab-score.mjs missed keys that are always the longest choice');
     if (!(b.wholeTestBots.echo >= 90)) bad('scripts/ab-score.mjs missed keys that all reuse one phrase (whole-test echo)');
     if (b.keys.letters[0] !== 10 || b.level3Pct !== 0) bad('scripts/ab-score.mjs miscounted key letters or level 3');
+    const lifted = { items: careful.items.map((q, n) => ({ ...q, choices: q.choices.map((c, i) => (i === q.answer ? ['an invisible gas called water vapor', 'tiny drops of liquid water', 'rain, snow, sleet and hail', 'soaks into the soil'][n % 4] : c)) })) };
+    if (!(scoreQuiz(lifted, job).oneItemBots.inPassage >= 90)) bad('scripts/ab-score.mjs missed keys lifted word for word from the source (inPassage)');
+    if (a.oneItemBots.inPassage > 40) bad('scripts/ab-score.mjs flagged inPassage on a quiz that lifts nothing from the source');
     if (!(a.worstOneItem[1] < 60 && a.wholeTestBots.echo < 60)) bad('scripts/ab-score.mjs scored a quiz of unrelated made-up words as guessable');
     if (/answer|why/i.test(studentView(careful, job).split('## Questions')[1].replace(/What about[^\n]*/g, ''))) bad('scripts/ab-score.mjs --view leaks the key or the reasons');
   }

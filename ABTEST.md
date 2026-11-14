@@ -15,7 +15,7 @@ below. Nothing else.
 | Arm | Who | What it may use |
 |---|---|---|
 | **Plain** | One fresh session, one go | The prompt only. No briefs, no scripts, no second reader, no fix round |
-| **Team** | The team, as `PROCESS.md` says | The planner's blueprint, the maker with its brief, every script (`scripts/ab-score.mjs` on its own draft), one fresh blind solve and, for a source with facts, one fact and source check, then **one** fix round |
+| **Team** | The team, as `PROCESS.md` says | The planner's blueprint, the maker with its brief, every script (`scripts/ab-score.mjs` on its own draft), one fresh blind solve, one difficulty judge and, for a source with facts, one fact and source check, then **one** fix round |
 
 The plain arm is not made weak on purpose. It is today's Claude, asked well. That is the point: the team has to beat
 that, not a straw man.

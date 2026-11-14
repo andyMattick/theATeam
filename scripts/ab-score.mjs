@@ -15,7 +15,8 @@
      coverage    how many of the job's ideas are tested; the most questions on one idea
      levels      the share of level 3
      keys        how often the key is the longest and the shortest choice; the key's letter counts
-     one-item bots   each of the team's cues on each question, against chance
+     one-item bots   each of the team's cues on each question, against chance (with inPassage: the key is the only
+                     choice found word for word in the source)
      whole-test bots echo, quoteEcho and their vote on the whole quiz
      across items    a key printed in another question (cross-item) */
 import { readFileSync, writeFileSync } from 'node:fs';
@@ -26,7 +27,7 @@ import { readingPicks } from '../checks/no-passage.mjs';
 import { crossItemHits } from '../checks/cross-item.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-export const ONE_ITEM = [...CUES, 'vote', 'shortest', 'middle', 'notLongest', 'general', 'frameBreak'].filter((s) => typeof STRATS[s] === 'function');
+export const ONE_ITEM = [...CUES, 'vote', 'shortest', 'middle', 'notLongest', 'general', 'frameBreak', 'inPassage'].filter((s) => typeof STRATS[s] === 'function');
 const pct = (x) => Math.round(1000 * x) / 10;
 
 export function loadJob(id) {
@@ -60,7 +61,9 @@ export function scoreQuiz(quiz, job) {
   const len = (q) => q.choices.map((c) => c.length);
   const longest = good.filter((q) => { const l = len(q); return l[q.answer] === Math.max(...l) && l.filter((x) => x === l[q.answer]).length === 1; }).length;
   const shortest = good.filter((q) => { const l = len(q); return l[q.answer] === Math.min(...l) && l.filter((x) => x === l[q.answer]).length === 1; }).length;
-  const passage = job.subject === 'reading' ? job.source : '';
+  // inPassage: the key is the only choice found word for word in the source. Played on every job that has a passage
+  // (first comparison, Nov 14, 2026: four or five of the plain arm's keys were the passage's own words; LESSONS.md L067).
+  const passage = /^There is no passage/.test(job.source) ? '' : job.source;
   const bots = {};
   for (const s of ONE_ITEM) bots[s] = pct(good.reduce((a, q) => a + pSet(STRATS[s](q.choices, q.prompt, q.where, passage), q.answer), 0) / n);
   const list = good.map((q) => ({ where: q.where, prompt: q.prompt, choices: q.choices, opts: q.choices, answer: q.answer, keys: [q.choices[q.answer]] }));
