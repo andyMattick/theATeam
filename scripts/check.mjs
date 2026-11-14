@@ -10,6 +10,7 @@ import { syncCheck } from './sync-check.mjs';
 import { crossItemHits, quoted } from '../checks/cross-item.mjs';
 import { readingPicks, judge, numberOnly } from '../checks/no-passage.mjs';
 import { outboxProblems, outboxEntries } from '../checks/outbox.mjs';
+import { scoreQuiz, studentView, loadJob } from './ab-score.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const problems = [];
@@ -160,6 +161,44 @@ for (const [name, opts, prompt, id, ...rest] of cases) {
   else if (outboxProblems(tpl, now).length || outboxEntries(tpl).length) bad('templates/OUTBOX.md must be an empty outbox (its example line must not start a line with "- ")');
 }
 
+/* ---------- the with-and-without comparison (ABTEST.md): the job bank is well formed, and the scorer tells a careless
+   quiz from a careful one ---------- */
+{
+  let bank = null;
+  try { bank = JSON.parse(readFileSync(join(ROOT, 'ab/prompts.json'), 'utf8')); } catch (e) { bad(`ab/prompts.json: ${e.message}`); }
+  if (bank) {
+    if (typeof bank.request !== 'string' || bank.request.length < 100) bad('ab/prompts.json: no "request"');
+    const ids = new Set();
+    for (const j of bank.jobs || []) {
+      for (const k of ['id', 'subject', 'title', 'source']) if (typeof j[k] !== 'string' || !j[k].trim()) bad(`ab/prompts.json: job ${j.id || '?'} has no "${k}"`);
+      if (ids.has(j.id)) bad(`ab/prompts.json: job ${j.id} is listed twice`); ids.add(j.id);
+      if (!Array.isArray(j.ideas) || j.ideas.length < 5 || j.ideas.length > 10) bad(`ab/prompts.json: job ${j.id} needs 5 to 10 ideas, so 10 questions can cover them`);
+      if (new Set((j.ideas || []).map((i) => i.id)).size !== (j.ideas || []).length) bad(`ab/prompts.json: job ${j.id} repeats an idea id`);
+    }
+    if ((bank.jobs || []).length < 4) bad('ab/prompts.json: fewer than 4 jobs');
+    const job = loadJob(bank.jobs[0].id), ideas = job.ideas.map((i) => i.id);
+    const W = 'amber birch cobalt dune ember fjord garnet heron indigo juniper kestrel lagoon marble nectar orchid pewter quartz russet sable tundra umber velvet willow yarrow zephyr alder bramble cinder delta egret fennel glacier hazel iris jasper kelpie larch moss nutmeg ochre pine quill reed saffron thistle'.split(' ');
+    let k = 0; const w = () => W[k++ % W.length] + (k > W.length ? 'x'.repeat(Math.floor(k / W.length)) : ''); const phrase = () => `${w()} ${w()} ${w()}`;
+    const careful = { items: Array.from({ length: 10 }, (_, n) => ({ id: `q${n + 1}`, idea: ideas[n % ideas.length], level: n % 5 < 2 ? 3 : 2, prompt: `What about ${phrase()}?`, choices: [phrase(), phrase(), phrase(), phrase()], answer: n % 4, why: 'Because the source says so.' })) };
+    const careless = { items: Array.from({ length: 10 }, (_, n) => ({ id: `q${n + 1}`, idea: ideas[0], level: 1, prompt: `What about ${phrase()}?`, choices: [`${phrase()} and that is why the water keeps moving through the cycle`, w(), w(), w()], answer: 0, why: 'Because the source says so.' })) };
+    careless.items[3].choices[2] = careless.items[3].choices[1];
+    const a = scoreQuiz(careful, job), b = scoreQuiz(careless, job);
+    if (a.structure.length) bad(`scripts/ab-score.mjs found structure problems in a careful quiz: ${a.structure[0]}`);
+    if (a.coverage.tested !== ideas.length) bad('scripts/ab-score.mjs did not count every idea as tested in a quiz that tests them all');
+    if (!b.structure.some((x) => /two choices the same/.test(x))) bad('scripts/ab-score.mjs missed two choices the same');
+    if (b.coverage.tested !== 1 || b.coverage.mostOnOneIdea !== 10) bad('scripts/ab-score.mjs missed a quiz that tests one idea ten times');
+    if (b.keys.longestPct !== 100 || b.oneItemBots.longest !== 100) bad('scripts/ab-score.mjs missed keys that are always the longest choice');
+    if (!(b.wholeTestBots.echo >= 90)) bad('scripts/ab-score.mjs missed keys that all reuse one phrase (whole-test echo)');
+    if (b.keys.letters[0] !== 10 || b.level3Pct !== 0) bad('scripts/ab-score.mjs miscounted key letters or level 3');
+    const lifted = { items: careful.items.map((q, n) => ({ ...q, choices: q.choices.map((c, i) => (i === q.answer ? ['an invisible gas called water vapor', 'tiny drops of liquid water', 'rain, snow, sleet and hail', 'soaks into the soil'][n % 4] : c)) })) };
+    if (!(scoreQuiz(lifted, job).oneItemBots.inPassage >= 90)) bad('scripts/ab-score.mjs missed keys lifted word for word from the source (inPassage)');
+    if (a.oneItemBots.inPassage > 40) bad('scripts/ab-score.mjs flagged inPassage on a quiz that lifts nothing from the source');
+    if (!(a.worstOneItem[1] < 60 && a.wholeTestBots.echo < 60)) bad('scripts/ab-score.mjs scored a quiz of unrelated made-up words as guessable');
+    if (/answer|why/i.test(studentView(careful, job).split('## Questions')[1].replace(/What about[^\n]*/g, ''))) bad('scripts/ab-score.mjs --view leaks the key or the reasons');
+  }
+  for (const f of ['ABTEST.md', 'ab/SCOREBOARD.md']) if (!existsSync(join(ROOT, f))) bad(`${f} is missing`);
+}
+
 /* ---------- the project list and what a new project copies ---------- */
 {
   let list = null;
@@ -178,4 +217,4 @@ for (const [name, opts, prompt, id, ...rest] of cases) {
 }
 
 if (problems.length) { console.error(problems.map(p => '✗ ' + p).join('\n')); console.error(`\n${problems.length} problem(s).`); process.exit(1); }
-console.log(`✓ ${briefs.length} briefs, the lessons log, the shared cues, cross-item, no-passage, the outbox rule and sync-check are in order.`);
+console.log(`✓ ${briefs.length} briefs, the lessons log, the shared cues, cross-item, no-passage, the outbox rule, the comparison's scorer and sync-check are in order.`);

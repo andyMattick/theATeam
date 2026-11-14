@@ -63,3 +63,12 @@ Seeded Nov 13, 2026 from the four projects' own reviews, audits and logs.
 - L055 | Nov 2026 | Pet World | An open review with the key in view flagged 19 of 77 clean items | readers get blind tasks
 - L056 | Nov 2026 | Pet World | Scripts passed while 8 FIX items sat in the bank | one round of readers stays, whatever the scripts say
 - L057 | Nov 2026 | Teacher Suite | The same call wrote the questions, the key and the review | the five rules: the maker never checks its own work
+
+## From the with-and-without comparison (ABTEST.md)
+- L062 | Nov 2026 | Team (comparison 1, science) | One plain session matched the team on correct keys (10 of 10), facts and source (10 of 10), structure, coverage of all 8 ideas and the 40% level 3 share | nothing to catch: evidence for STREAMLINE.md that the blueprint's structure rules added nothing measurable on a short quiz
+- L063 | Nov 2026 | Team (comparison 1, science) | The plain quiz's key was the longest choice in 5 of 10 and a key's phrase was printed in another question 3 times; the team's draft had 2 of 10 and none, before any reader saw it | the maker's cue rules and scripts/ab-score.mjs; these earn their place
+- L064 | Nov 2026 | Team (comparison 1, science) | The team's level 3 questions were no harder in the science than the plain arm's (2 clearly of 4, against 3 of 4), even after a fix round told to fix it; a rewrite for difficulty became rule lookup | reader only: the difficulty judge reads the draft before the fix round, not only the final
+- L065 | Nov 2026 | Team (comparison 1, science) | Five of the team's draft questions had an off-source step or a defensible wrong choice that the plain quiz never had: reaching for harder questions took the maker outside the passage | reader only (fact and source checker); the maker's brief already says nothing outside the source
+- L066 | Nov 2026 | Team (comparison 1, science) | The plain quiz asked two questions on one sentence, both under one idea tag, and the "no idea more than twice" count passed it | to build: the repeats check
+- L067 | Nov 2026 | Team (comparison 1, science) | A judge saw several plain-arm keys close to the passage's words; the scorer played inPassage only on reading jobs | scripts/ab-score.mjs plays inPassage on every job with a passage (it needs an exact match, so it did not separate the arms here)
+

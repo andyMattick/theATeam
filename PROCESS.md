@@ -70,7 +70,8 @@ stage 6 exists.
 Each writes its own findings file; the lead merges them.
 - 🙈 **Blind solver:** the student copy only. For reading, first without the passage, then with it.
 - 🔎 **Fact and source checker:** science, social studies, any nonfiction claim, any quotation.
-- 🎯 **Difficulty judge:** level 3 against its level 2 twin, and a sample against the real exam where there is one.
+- 🎯 **Difficulty judge:** level 3 against its level 2 twin, and a sample against the real exam where there is one. It reads
+  the draft here, before the fix round, whether or not there is an exam behind the work.
 - 👀 **Fresh eyes:** the finished page or screen.
 
 Every finding is **FIX** (a real problem, with the direction of a fix), **KEEP** (the reader was wrong, one line why),

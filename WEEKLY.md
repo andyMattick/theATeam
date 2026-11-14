@@ -29,12 +29,15 @@ its checks are green, and leaves a change to a project's sensitive paths for the
 5. **Debt.** Fix the worst items on its known-failing lists. A list is shorter at the end, never longer.
 
 ## Once a run
-6. **The practice job**, in one project, taking turns in the order of `projects.json` (skip a project whose
-   `practiceJob` says none): one small made-up job through all nine stages, capped at $5. Its findings go to step 3.
+6. **The with-and-without comparison** (`ABTEST.md`). It is the practice job: the next job in `ab/prompts.json` is done
+   once by one plain session and once by the team, and both are judged the same way by fresh readers who don't know
+   which is which. Capped at $5. Write `ab/<date>-<job>.md`, add the row to `ab/SCOREBOARD.md`, and write what it
+   teaches into `LESSONS.md`, whichever way it points. "No real difference" and "the plain arm did better" are
+   findings: they also go to `STREAMLINE.md`.
 7. **Send lessons back out.** If steps 3 to 6 changed anything here, merge it, then sync every project again (step 1)
    so they all end the run on the same version.
 8. **The report**: `weekly/<date>.md` here. For each project: what was synced, what the checks found, what was fixed,
-   what was listed, what it cost. Then: the practice job, every brief and check that changed and why, and "Left for
+   what was listed, what it cost. Then: the comparison's verdict in a line, every brief and check that changed and why, and "Left for
    next week". Under 60 lines. Also tell the owner in the session: the five lines that matter.
 
 ## On the first run of each month
