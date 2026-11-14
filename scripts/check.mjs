@@ -253,7 +253,13 @@ for (const [name, opts, prompt, id, ...rest] of cases) {
     if (!scoreQuiz(AB(1, true, false), vj).versions.reusedChoices.includes('q3')) bad('scripts/ab-score.mjs missed a choice text reused in B');
     if (!scoreQuiz(AB(1, false, true), vj).versions.mismatched.includes('q5')) bad('scripts/ab-score.mjs missed twins at different levels');
   }
-  for (const f of ['ABTEST.md', 'ab/SCOREBOARD.md']) if (!existsSync(join(ROOT, f))) bad(`${f} is missing`);
+  for (const f of ['ABTEST.md', 'ab/SCOREBOARD.md', 'ab/HUMAN-RATING.md']) if (!existsSync(join(ROOT, f))) bad(`${f} is missing`);
+  // the measures were fixed before the counted runs: the section, its primary measure and its rule for a win must stay
+  if (existsSync(join(ROOT, 'ABTEST.md'))) {
+    const t = readFileSync(join(ROOT, 'ABTEST.md'), 'utf8');
+    for (const m of ['## The measures, fixed on Nov 14, 2026', '**Primary measure: confirmed bad answers for every 10 items.**', 'at least 1 fewer bad answer for every 10 items', '| Wins needed | 5 | 6 | 7 | 7 | 8 | 9 | 9 | 10 | 10 | 11 | 12 | 12 |', '**Changing any of this.**'])
+      if (!t.includes(m)) bad(`ABTEST.md no longer has "${m}": the measures were fixed in advance; a change is dated in that section with its reason, and this check is changed with it`);
+  }
 }
 
 /* ---------- the project list and what a new project copies ---------- */

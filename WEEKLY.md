@@ -1,7 +1,7 @@
 # The weekly run
 
 One run a week, by one lead session, through every project in `projects.json`. What it is for: `IMPROVEMENT.md`.
-This file is the steps. Cap: about $12 for the whole run (the comparison is $8 of it). Changes go out as pull requests; the lead merges one when
+This file is the steps. Cap: about $20 for the whole run (the comparison's two jobs are $16 of it). Changes go out as pull requests; the lead merges one when
 its checks are green, and leaves a change to a project's sensitive paths for the owner.
 
 ## Before starting
@@ -24,16 +24,25 @@ its checks are green, and leaves a change to a project's sensitive paths for the
    since last week, for anything a session didn't put in the outbox. A lesson that isn't about
    that project's own code goes into `LESSONS.md` here with the next id, and into a brief (bump its version, name the
    cause) when it happened twice, or once if serious.
-4. **Real-use signals**, where the project has them (Pet World: `npm run weekly-learning`; Planning Period: teachers'
-   comments in its records). Counts only. Act on what shows up twice, or once if serious.
+4. **Real-use signals**, where the project has them. Counts only, never names or work. Act on what shows up twice,
+   or once if serious.
+   - **Pet World** already collects its own, in its own scheduled run every Sunday evening ("Weekly Pet World
+     review": grown-ups' notes on a problem, heart verdicts, how often she asks her pet tutor to reword, hint or
+     explain a word, and what classes got right and missed; `docs/WEEKLY-LEARNING.md` there). **Don't run its export
+     again here.** Read its newest `docs/learning/<date>.md` and `docs/learning/EFFICIENCY.md`, and bring anything
+     that isn't about Pet World's own code into `LESSONS.md`. If the newest report is more than 8 days old, say so in
+     this run's report: that run has stopped.
+   - **Planning Period**: teachers' comments in its records.
+   - **AP Statistics** and **Teacher Suite** collect none yet. Say so; don't invent any.
 5. **Debt.** Fix the worst items on its known-failing lists. A list is shorter at the end, never longer.
 
 ## Once a run
-6. **The with-and-without comparison** (`ABTEST.md`). It is the practice job: the next job in `ab/prompts.json` is done
-   by one plain session, by a lean team and by the full team, and all three are judged the same way by fresh judges
-   who don't know which is which. Capped at $8. Write `ab/<date>-<job>.md`, save the sets in `ab/runs/`, add the row
-   to `ab/SCOREBOARD.md`, and write what it teaches into `LESSONS.md`, whichever way it points. "No real difference"
-   and "a cheaper arm did as well" are findings: they also go to `STREAMLINE.md`.
+6. **The with-and-without comparison** (`ABTEST.md`). It is the practice job: the next **two** jobs in
+   `ab/prompts.json` are each done by one plain session, by a lean team and by the full team, and judged the same way
+   by fresh judges who don't know which is which. Capped at $8 a job. The measures and the rule for a win were fixed
+   on Nov 14, 2026: use them as written. For each job write `ab/<date>-<job>.md`, save the sets in `ab/runs/`, add the
+   row to `ab/SCOREBOARD.md`, and write what it teaches into `LESSONS.md`, whichever way it points. "No real
+   difference" and "a cheaper arm did as well" are findings: they also go to `STREAMLINE.md`.
 7. **Send lessons back out.** If steps 3 to 6 changed anything here, merge it, then sync every project again (step 1)
    so they all end the run on the same version.
 8. **The report**: `weekly/<date>.md` here. For each project: what was synced, what the checks found, what was fixed,

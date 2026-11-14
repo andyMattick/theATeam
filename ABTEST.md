@@ -8,6 +8,51 @@ So: the same job is done three times, by one plain Claude session, by a lean tea
 results are judged the same way by judges who don't know which is which. It runs once a week inside the weekly run
 (`WEEKLY.md`), where it is the practice job. Reports go in `ab/`, and `ab/SCOREBOARD.md` keeps the running count.
 
+## The measures, fixed on Nov 14, 2026 before the counted runs began
+Written down first so nobody can pick the flattering number afterwards. The run of Nov 14 on `sci-water-cycle` had two
+arms and came before this section: it is the **pilot** and is not counted.
+
+**Primary measure: confirmed bad answers for every 10 items.** A bad answer is a wrong key, two right answers, no
+right answer, a giveaway a judge can explain, a false or off-source claim, or a right typed or written answer that
+would be marked wrong. A judge who doesn't know the arm raises it; the lead confirms it from the set itself.
+
+**Secondary measures (three, no more):**
+1. **Guessability:** the worst bot's points over chance (only on 8 or more multiple-choice questions), and the number
+   of keys printed in another question.
+2. **Level 3 that is truly harder:** of the items an arm labels level 3, the share the difficulty judge rates harder
+   in the skill.
+3. **Cost:** sessions and tokens, and dollars where a session shows them.
+
+**What counts as a win on one run.** Arm X beats arm Y when X has at least 1 fewer bad answer for every 10 items.
+Anything closer is a tie. Secondary measures are reported beside it and never turn a tie into a win.
+
+**What counts as a result over the runs.** Ties are set aside. Of the runs that are not ties, X is "better than Y"
+only with at least this many wins (a one-sided sign test at 5%):
+
+| Runs that aren't ties | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Wins needed | 5 | 6 | 7 | 7 | 8 | 9 | 9 | 10 | 10 | 11 | 12 | 12 |
+
+Fewer than 5 runs that aren't ties: "no difference shown", and say so.
+
+**The questions, in this order:**
+1. Is the lean arm better than the plain arm?
+2. Is the full team better than the lean arm? If not, the lean arm is the default for that kind of content, and the
+   extra steps are a case for the owner (`STREAMLINE.md`).
+3. Does the answer change with the kind of content? Each job is run twice so this can be seen, not proved.
+
+**How many runs.** Sixteen counted runs: every job twice, two jobs a week, so eight weekly runs from Nov 14, 2026.
+If questions 1 or 2 are still "no difference shown" at sixteen, run eight more before saying anything to anyone else.
+
+**A person checks the judges.** For at least 3 of the 16 runs, the owner or another teacher rates the same three
+keyless copies with `ab/HUMAN-RATING.md`, without knowing the arms or the judges' findings. The report gives the
+person's count of bad answers beside the judges'. If they disagree on which arm was best in 2 of the 3, the judges'
+results are not presented to anyone as evidence.
+
+**Changing any of this.** A change to a measure, a rule or a job is dated here with its reason, and runs before and
+after it are reported apart. The comparison is evidence about the checking of written content by AI judges. It is not
+evidence about what students learn: only real results show that.
+
 ## The three arms
 All get exactly the same words: `node scripts/ab-score.mjs --prompt <job id>` prints them (the request, the job's ask,
 its source and ideas, and the output format). Nothing else.
@@ -22,7 +67,8 @@ The plain arm is not made weak on purpose. It is today's Claude, asked well. The
 team has to beat the lean one by enough to pay for its extra sessions.
 
 ## The jobs: every kind of content the four apps make
-`ab/prompts.json` has eight made-up jobs. One is used a run, in order, so eight runs go once round.
+`ab/prompts.json` has eight made-up jobs. Two are used each week, in order, so four weeks go once round and eight
+weeks go round twice.
 
 | Job | Kind | Like what |
 |---|---|---|
@@ -45,7 +91,8 @@ In `scripts/ab-score.mjs` (`OUTPUT_FORMAT`) and printed with the prompt: one JSO
 `id`, `idea`, `level`, `type`, `prompt`, `why`, and the fields its type needs.
 
 ## The steps
-1. **Pick the job**: the next one in `ab/prompts.json` after the last report in `ab/`.
+1. **Pick the jobs**: the next two in `ab/prompts.json` after the last report in `ab/` (after the eighth comes the
+   first). Do steps 2 to 9 for each, one job at a time, with fresh sessions for everything.
 2. **Run the plain arm** in one fresh session. Save its set. Note its tokens (and dollars, where the session shows them).
 3. **Run the lean arm** and **the team arm**, each from fresh sessions that share nothing with the other arm. For each,
    save the draft (before the fix round) and the final. Note sessions, tokens and dollars for each step.
@@ -78,6 +125,7 @@ In `scripts/ab-score.mjs` (`OUTPUT_FORMAT`) and printed with the prompt: one JSO
 # With and without the team: <job title>, <date>
 
 Verdict in one line: which arm was best, by how much, and at what cost.
+Primary measure (bad answers for every 10 items): plain / lean / team. Lean against plain: win, tie or loss. Team against lean: win, tie or loss.
 
 | | Plain | Lean (draft) | Lean (final) | Team (draft) | Team (final) |
 | Bad answers (wrong key, two right, none right, giveaway, false claim, a right answer marked wrong) |
@@ -110,5 +158,5 @@ Limits of this run.
 - **Never tune a job to make an arm look good**, and never retire a job because the plain arm won it.
 
 ## What it costs
-Three arms and four judges are about a dozen sessions. Cap: $8 a run. It replaces the weekly practice job; the weekly
-run's cap is $12 with it.
+Three arms and four judges are about a dozen sessions a job. Cap: $8 a job, so $16 a week for two. It replaces the
+weekly practice job; the weekly run's cap is $20 with it.
