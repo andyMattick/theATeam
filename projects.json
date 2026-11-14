@@ -1,5 +1,5 @@
 {
-  "about": "The projects on the team. The weekly run (WEEKLY.md) goes through this list in order. Adding a project: README.md, 'Adding a new project'.",
+  "about": "The projects on the team. The weekly run (WEEKLY.md) goes through this list in order. (practiceJob is what a hands-on job looks like in each; the weekly practice job itself is the comparison in ABTEST.md.) Adding a project: README.md, 'Adding a new project'.",
   "projects": [
     { "name": "Pet World", "repo": "andyMattick/pet-World-2", "check": "npm run verify", "instructions": "CLAUDE.md", "practiceJob": "one unit's fix or a few new questions through all nine stages", "joined": "2026-11-13" },
     { "name": "Planning Period", "repo": "andyMattick/planning-period", "check": "npm run check", "instructions": "CLAUDE.md", "practiceJob": "npm run weekly (docs/WEEKLY-TEST.md): one made-up order", "joined": "2026-11-13" },

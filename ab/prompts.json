@@ -1,0 +1,72 @@
+{
+  "about": "Made-up jobs for the with-and-without comparison (ABTEST.md). One is used a run, taking turns. Sources are written for this file: no real class, teacher or order. Every arm gets exactly `request` plus the job's `source` and `ideas`, and returns the JSON shape in ABTEST.md.",
+  "request": "Write a quiz on the source below for the grade given. Exactly 10 multiple-choice questions, 4 choices each, exactly one right answer. About 4 of the 10 should be level 3 (harder in the skill itself, not just longer), the rest level 1 or 2. Use nothing that isn't in the source. Tag every question with the id of the one idea it mainly tests. Return only the JSON described in the output format.",
+  "jobs": [
+    {
+      "id": "sci-water-cycle",
+      "subject": "science",
+      "grade": 5,
+      "title": "Where the Puddle Went",
+      "source": "After a rainstorm, a puddle sits in the schoolyard. By the next afternoon it is gone. The water did not vanish. Energy from the sun warmed the puddle, and the liquid water slowly changed into an invisible gas called water vapor. This change from liquid to gas is called evaporation. Evaporation happens faster when it is warm and windy, and slower when it is cool and still.\n\nWater vapor rises with warm air. High above the ground the air is colder. When water vapor cools, it changes back into tiny drops of liquid water. This change from gas to liquid is called condensation. The drops gather around bits of dust in the air, and billions of them together form a cloud. You can see condensation on the ground too: the outside of a cold glass gets wet on a humid day because water vapor in the air touches the cold glass and turns to liquid.\n\nInside a cloud, the tiny drops bump into each other and join. When the drops grow too heavy for the air to hold up, they fall. Water that falls from clouds is called precipitation. Rain, snow, sleet and hail are all precipitation.\n\nSome of the water that reaches the ground soaks into the soil, where plant roots can take it in. Some of it runs downhill over the surface into streams, rivers and lakes. This flowing water is called runoff. Sooner or later the sun warms that water as well, and it evaporates again. Because the same water keeps moving through these steps, scientists call it the water cycle. No new water is made, and none is used up.",
+      "ideas": [
+        { "id": "i1", "idea": "Evaporation: the sun's energy changes liquid water into water vapor, an invisible gas" },
+        { "id": "i2", "idea": "Evaporation is faster when it is warm and windy, slower when cool and still" },
+        { "id": "i3", "idea": "Condensation: water vapor cools and changes back into tiny liquid drops" },
+        { "id": "i4", "idea": "Clouds are billions of tiny drops gathered around bits of dust" },
+        { "id": "i5", "idea": "The cold glass: vapor in the air turns to liquid on a cold surface" },
+        { "id": "i6", "idea": "Precipitation: drops join, grow too heavy and fall as rain, snow, sleet or hail" },
+        { "id": "i7", "idea": "On the ground, water soaks into soil or runs off into streams, rivers and lakes" },
+        { "id": "i8", "idea": "It is a cycle: the same water keeps moving; none is made or used up" }
+      ]
+    },
+    {
+      "id": "hist-marrow-creek",
+      "subject": "social studies",
+      "grade": 6,
+      "title": "How Marrow Creek Changed (a made-up town)",
+      "source": "Marrow Creek is a made-up town. Everything a quiz says about it must come from this page.\n\nMarrow Creek began in 1848 as a ferry landing. Travelers heading west had to cross the Tolland River, and a family named Okafor ran the only ferry for twenty miles. A general store and a blacksmith opened beside the landing because travelers waiting for the ferry needed supplies and repairs.\n\nIn 1871 a railroad company built a bridge over the river three miles upstream, at a place called Harlan's Bend. Within five years most travelers crossed by train, and the ferry made only two trips a day. The store and the blacksmith both moved to Harlan's Bend. The town's own records show its population falling from 640 in 1870 to 210 in 1880.\n\nThe people who stayed turned to farming. The soil near the creek was good for apples, and in 1893 the growers formed a cooperative so they could share one packing house and bargain together for lower shipping prices. By 1910 Marrow Creek shipped more apples than any other town in the county, and the population had climbed back to 580.\n\nPeople in Marrow Creek tell this history in two ways. The town's Founders Day speech, given every June, says the town was saved by the hard work of its farmers. A diary kept by the ferryman's daughter, Adaeze Okafor, tells it differently. She wrote in 1879 that many families did not choose to stay: they were too poor to move, and the first orchards were planted on land that had become cheap because so many neighbors had left.\n\nHistorians who study the town use both the speech and the diary. They also use the population records and the cooperative's shipping ledgers, because those were written at the time for practical reasons and not to make anyone look good.",
+      "ideas": [
+        { "id": "i1", "idea": "The town began in 1848 as a ferry landing; businesses opened because waiting travelers needed things" },
+        { "id": "i2", "idea": "The 1871 railroad bridge upstream took the travelers away and the businesses followed" },
+        { "id": "i3", "idea": "Evidence of decline: population fell from 640 (1870) to 210 (1880)" },
+        { "id": "i4", "idea": "Those who stayed turned to apple farming because the soil suited it" },
+        { "id": "i5", "idea": "The 1893 cooperative: share a packing house, bargain together for lower shipping prices" },
+        { "id": "i6", "idea": "Recovery by 1910: most apples shipped in the county, population back to 580" },
+        { "id": "i7", "idea": "Two tellings: the Founders Day speech (hard work) and the diary (too poor to move, cheap land)" },
+        { "id": "i8", "idea": "Why historians also use records and ledgers: written at the time for practical reasons" }
+      ]
+    },
+    {
+      "id": "math-ratios",
+      "subject": "math",
+      "grade": 6,
+      "title": "Ratios and unit rates",
+      "source": "There is no passage. Write the quiz on these skills, with made-up, realistic situations. Every number in a right answer must be worked out exactly; show the working in `why`.\n\nSkill notes for the grade: a ratio compares two quantities in a stated order (3 red to 5 blue is 3:5, not 5:3). Equivalent ratios multiply or divide both parts by the same number. A unit rate is the amount for one unit (240 miles in 4 hours is 60 miles per hour). To compare two deals, find each unit price. A ratio can compare a part to a part or a part to the whole, and the question must make clear which.",
+      "ideas": [
+        { "id": "i1", "idea": "Write a ratio in the order the words give" },
+        { "id": "i2", "idea": "Part to part against part to whole" },
+        { "id": "i3", "idea": "Find an equivalent ratio or a missing value in a table of equivalent ratios" },
+        { "id": "i4", "idea": "Find a unit rate" },
+        { "id": "i5", "idea": "Use a unit rate to find another amount" },
+        { "id": "i6", "idea": "Compare two deals or two rates and say which is better, with the reason" }
+      ]
+    },
+    {
+      "id": "ela-lantern",
+      "subject": "reading",
+      "grade": 5,
+      "title": "The Lantern on Pike Hill",
+      "source": "[1] Every evening at dusk, Old Tomas climbed Pike Hill and lit the lantern on its iron post. Nobody in the village could remember why. The fishing boats had used a new harbor on the far side of the bay for thirty years, and no boat had passed Pike Hill in all that time.\n\n[2] Inez thought it was silly, and she said so. \"You're lighting the way for nobody,\" she told him, the summer she turned eleven.\n\n[3] Tomas only smiled and handed her the oil can. \"Carry this up for me, then. My knees aren't what they were.\"\n\n[4] So Inez carried the oil, grumbling the whole way. She carried it the next evening as well, and the one after. She told herself she was only being polite. But she noticed that she had started watching the sky in the afternoons, judging when the light would begin to fail.\n\n[5] In October a storm came down the coast faster than anyone expected. Tomas was in bed with a fever. The wind tore a shutter off the bakery. Inez stood at her window and looked at the dark shape of Pike Hill, and for a long moment she did not move.\n\n[6] Then she took the oil can from its hook.\n\n[7] The climb took twice as long as usual. Twice the wind blew out her match. The third one caught, and the lantern glowed against the rain.\n\n[8] She was halfway down when she saw it: a small boat, far off course, turning slowly toward the light. It was the doctor's skiff, coming back from the island, and it had lost the harbor in the dark.\n\n[9] The next evening Inez was on the hill before dusk. She did not grumble, and nobody asked her why she had come.",
+      "ideas": [
+        { "id": "i1", "idea": "Setting and situation: the lantern is lit each dusk though no boat has passed in thirty years" },
+        { "id": "i2", "idea": "Inez's first attitude: she thinks it is silly and says so" },
+        { "id": "i3", "idea": "How Tomas answers: he doesn't argue, he gives her a job" },
+        { "id": "i4", "idea": "The quiet change in paragraph 4: she starts watching the sky (she cares before she admits it)" },
+        { "id": "i5", "idea": "The turning point: the storm, Tomas ill, her long moment, then she takes the oil can" },
+        { "id": "i6", "idea": "The climb: what makes it hard, and that she keeps trying" },
+        { "id": "i7", "idea": "The doctor's skiff: the light matters after all" },
+        { "id": "i8", "idea": "The ending and theme: she comes without being asked; a duty can matter even when you can't see who it is for" }
+      ]
+    }
+  ]
+}
